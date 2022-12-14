@@ -1,5 +1,5 @@
 from django import forms
-from .models import Salary
+from .models import Salary, Manager
 
 
 class DateInput(forms.DateInput):
@@ -7,6 +7,10 @@ class DateInput(forms.DateInput):
 
 
 class SalaryForm(forms.ModelForm):
+    def __init__(self, company_id, *args, **kwargs):
+        super(SalaryForm, self).__init__(*args, **kwargs)
+        self.fields['manager'].queryset = Manager.objects.filter(id__in=company_id)
+
     class Meta:
         model = Salary
         fields = '__all__'

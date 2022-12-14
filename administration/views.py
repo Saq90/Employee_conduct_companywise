@@ -168,13 +168,20 @@ def Remove_Employee_List(request, id):
     return HttpResponseRedirect('/administration/all_employee_list')
 
 
-@login_required
+# @login_required
 def Remove_Employee(request, id,company_id,company_staff_id):
-    employees = Employee.objects.get(company_staff_id=company_staff_id)
-    CompanyStaff.objects.get(id=employees.company.company_id).delete()
-    print(employees)
-    employees.delete()
-    messages.success(request, "deleted successfully")
+    employees_list = Employee.objects.filter(id=id)
+    if employees_list.count() > 0:
+        employees = employees_list.first()
+        try:
+            CompanyStaff.objects.get(id=employees.user.id).delete()
+            print(employees)
+            employees.delete()
+            messages.success(request, "deleted successfully")
+            return redirect(f'/administration/all_employee/{company_id}/{company_staff_id}')
+        except:
+            return redirect(f'/administration/all_employee/{company_id}/{company_staff_id}')
+    print('hii22')
     return redirect(f'/administration/all_employee/{company_id}/{company_staff_id}')
 
 
@@ -1261,21 +1268,21 @@ class UserPostListView(LoginRequiredMixin, ListView):
 #         return render(self.request, 'administration/employee_documents.html', context)
 #
 #
-# def PostDetailView(request,company_id, company_staff_id,id):
-#     if request.method == "POST":
-#         data = json.loads(request.body.decode('utf-8'))
-#         document_obj_id = data.get('id', None)
-#         document_obj = Post.objects.get(pk=document_obj_id)
-#         return JsonResponse(document_obj.to_json())
-#
-#     # Old Code
-#     if company_id:
-#         # company_staff = CompanyStaff.objects.get(id=company_staff_id)
-#         document_list = get_object_or_404(Post, id=id)
-#         # document_list = Post.objects.filter(user=company_staff)
-#         return render(request, 'administration/employee_documents.html',
-#                       {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
-#
+def PostDetailView(request,company_id, company_staff_id,id):
+    if request.method == "POST":
+        data = json.loads(request.body.decode('utf-8'))
+        document_obj_id = data.get('id', None)
+        document_obj = Post.objects.get(pk=document_obj_id)
+        return JsonResponse(document_obj.to_json())
+
+    # Old Code
+    if company_id:
+        # company_staff = CompanyStaff.objects.get(id=company_staff_id)
+        document_list = get_object_or_404(Post, id=id)
+        # document_list = Post.objects.filter(user=company_staff)
+        return render(request, 'administration/employee_documents.html',
+                      {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
+
 # def PostDetailView(request,company_id, company_staff_id,id):
 #
 #     if company_id:
@@ -1284,11 +1291,11 @@ class UserPostListView(LoginRequiredMixin, ListView):
 #         return render(request, 'administration/employee_documents.html', {'posts':posts,'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-class PostDetailView(DetailView):
-    model = Post
-    template_name = 'administration/employee_documents.html'
-
-
+# class PostDetailView(DetailView):
+#     model = Post
+#     template_name = 'administration/employee_documents.html'
+#
+#
 
 class PostDeleteView(View):
     def get(self, request, id):

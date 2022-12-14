@@ -27,7 +27,11 @@ class SalaryView(View):
     def get(self, request, company_id, company_staff_id):
         if company_id:
             salary = Salary.objects.filter(manager__user__company__id=company_id)
-            form = SalaryForm()
+            l = []
+            for s in salary:
+                l.append(s.manager.id)
+            form = SalaryForm(l)
+            print('form',form)
             context = {'salary': salary, 'form': form, 'company_id':company_id, 'company_staff_id':company_staff_id}
             return render(request, 'managerpayroll/manager-salary.html', context)
 

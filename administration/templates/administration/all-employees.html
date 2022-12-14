@@ -809,9 +809,10 @@
 
    <script>
   	function getId(id) {
+  	console.log('heello ',{{company_id}});
 		// alert(id)
 		var a =document.getElementById('delete');
-		a.href = "/administration/Remove_employee/{company_id}/{company_staff_id}"+id;
+		a.href = "/administration/Remove_employee/{{company_id}}/{{company_staff_id}}/"+id;
 	}
 
    </script>

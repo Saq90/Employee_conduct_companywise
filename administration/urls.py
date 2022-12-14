@@ -117,8 +117,8 @@ urlpatterns = [
 
     path('alldocument/<int:company_id>/<int:company_staff_id>', views.PostListView.as_view(), name='alldocument'),
     path('user/', views.UserPostListView.as_view(), name='user-posts'),
-    path('allpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.PostDetailView.as_view(), name='allpost'),
-    # path('allpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.PostDetailView, name='allpost'),
+    # path('allpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.PostDetailView.as_view(), name='allpost'),
+    path('allpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.PostDetailView, name='allpost'),
     path('search/', views.search, name='search'),
     path('all_document_View/<int:company_id>/<int:company_staff_id>', views.All_document_View, name='all_document_View'),
     path('post-delete/<int:id>', views.PostDeleteView.as_view(), name='post-delete'),
