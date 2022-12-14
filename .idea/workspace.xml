@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7aceaa1e-a414-4f3d-909a-979172006f6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/account/middlewares/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/middlewares/auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/0002_company_companystaff.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/0003_auto_20221107_1129.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/0004_auto_20221107_1154.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/0005_company_name.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/0006_auto_20221107_1541.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/0008_auto_20221109_1053.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/administration/migrations/0002_auto_20221107_1541.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employee/migrations/0003_employee_company_staff.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/migrations/0002_invoice_company.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/managers/migrations/0002_manager_company_staff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/LoginCheckMiddleWare.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/LoginCheckMiddleWare.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/add-holiday.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/add-holiday.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/add-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/all-employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/all-employees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/all-manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/all-manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/approved-leaves.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/approved-leaves.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/approved-resignation.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/approved-resignation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/assign-employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/assign-employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/cancelled-resignation.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/cancelled-resignation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/clients-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/clients-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/clients.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/clients.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/department.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-all-documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-all-documents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-approved-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-approved-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-attendance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-attendance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-cancelled-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-cancelled-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-pending-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-pending-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee_documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee_documents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/leads.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/leads.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/list-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/list-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-all-documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-all-documents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-approved-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-approved-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-attendance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-attendance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-cancelled-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-cancelled-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-pending-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-pending-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/notifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/notifications.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/pending-leaves.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/pending-leaves.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/pending-resignation.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/pending-resignation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/rejected-leaves.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/rejected-leaves.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/view-timesheet.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/view-timesheet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dstt/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dstt/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/apply-leaves.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/apply-leaves.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/apply-resignation.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/apply-resignation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/attendance-info.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/attendance-info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/change_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/change_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/create-timesheet.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/create-timesheet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/my-profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/my-profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/view-timesheet.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/view-timesheet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/templates/leave/add-leaves-balance.html" beforeDir="false" afterPath="$PROJECT_DIR$/leave/templates/leave/add-leaves-balance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/leave/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/leave/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/templates/management/invoices.html" beforeDir="false" afterPath="$PROJECT_DIR$/management/templates/management/invoices.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_leave/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_leave/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_leave/templates/manager_leave/add-leaves-balance.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager_leave/templates/manager_leave/add-leaves-balance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_leave/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_leave/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_leave/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_leave/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_resign/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_resign/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/templates/managerpayroll/manager-payslip.html" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/templates/managerpayroll/manager-payslip.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/templates/managerpayroll/manager-salary.html" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/templates/managerpayroll/manager-salary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/add-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/apply-leave.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/apply-leave.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/apply-resignation.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/apply-resignation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/approved-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/approved-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/attendance-info.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/attendance-info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/attendance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/attendance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/cancelled-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/cancelled-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/change_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/change_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/employee-leaves.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/employee-leaves.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/employee-resignation.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/employee-resignation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/employee-timesheet.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/employee-timesheet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/my-profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/my-profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/pending-regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/pending-regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/salary.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/salary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/templates/payroll/employee-payslip.html" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/templates/payroll/employee-payslip.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/templates/payroll/employee-salary.html" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/templates/payroll/employee-salary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/regularization/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/regularization/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resign/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/resign/models.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/administration/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/administration/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/dstt/settings.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/employee/admin.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/employee/forms.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/employee/models.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="24BPcPTyN7KTzQ6DdqDgngTyCfd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/saquib/Desktop/New folder (9)/secondproject",
+    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\saquib\Desktop\New folder (2)\internal" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="internal_H" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver 8000" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.manage" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7aceaa1e-a414-4f3d-909a-979172006f6a" name="Default Changelist" comment="" />
+      <created>1643101086570</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1643101086570</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/account/middlewares/auth.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/employee/views.py</url>
+          <line>254</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/employee/views.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/employee/views.py</url>
+          <line>260</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/employee/views.py</url>
+          <line>263</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/employee/views.py</url>
+          <line>157</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/employee/views.py</url>
+          <line>165</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="form" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

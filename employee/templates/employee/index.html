@@ -1,0 +1,157 @@
+{% load static %}
+{% include "employee/header.html" %}
+{% include "employee/sidebar.html" %}
+{% include "employee/topbar.html" %}
+
+      <div class="page_wrapper">
+        <div class="page-content">
+          <div class="row">
+            <div class="col">
+              <div class="card message">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="message-content">
+                       <script type="text/javascript">
+                        document.write("<h1 class='wish'>");
+                        var day = new Date();
+                        var hr = day.getHours();
+                        if (hr >= 0 && hr < 12){
+                          document.write("Good Morning!");
+                        }
+                        else if (hr == 12) {
+                          document.write("Good Noon!");
+                        }
+                        else if (hr >= 12 && hr <= 17) {
+                          document.write("Good Afternoon!");
+                        }
+                        else {
+                          document.write("Good Evening!");
+                        }
+                        document.write("</h1>");
+                      </script>
+                      <h4>Welcome to the Employee Dashboard</h4>
+                      <p>Scroll down to see quick infomation and overview of our Server</p>
+                    </div>
+                    <div class="ms-auto">
+                      <div class="message-img">
+                        <img src="{% static 'asets/images/message-image.png' %}" class="img-fluid">
+                      </div>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col d-flex">
+              <div class="card radius-10 w-100 employee-timing-info">
+                <div class="card-header bg-transparent">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <h6 class="mb-0">Saquib Jawed</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart-container">                    
+                    <div class="working-time">
+                      <span class="time-spend-today">{{ hours_num }} hrs</span>
+                    </div>
+                  </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Today: <span class="badge bg-gradient-quepal rounded-pill">{% now "jS F Y " %}</span>
+                  </li>
+                  <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Check In At: <span class="badge bg-gradient-ibiza rounded-pill">{{ attendance.check_in }}</span>
+                  </li>
+                  <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Check Out At: <span class="badge bg-gradient-deepblue rounded-pill">{{ attendance.check_out }}</span>
+                  </li>
+                </ul>
+                <div class="card-footer bg-transparent m-auto">
+                  {% if not is_complete_attendance %}
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <button class="btn btn-outline-orangeyellow" id="check_in" onclick="showCheckinTimeDate()">{{ is_check_in }}</button>
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+      <form id="hddfields" name="hddfields">
+        {% csrf_token %}
+        <input id="is_check_in" name="is_check_in" type="hidden" value="{{ is_check_in }}">
+        <input id="attendance_id" name="attendance_id" type="hidden" value="{{ attendance.id }}">
+      </form>
+      <footer class="page-footer">
+        <p class="mb-0">Copyright © 2022. All right reserved.</p>
+      </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.7/metisMenu.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <script src="{% static 'asets/js/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'asets/js/Chart.min.js' %}"></script>
+    <script src="{% static 'asets/js/Chart.extension.js' %}"></script>
+    <script src="{% static 'asets/js/script.js' %}"></script>
+    <script src="{% static 'asets/js/jquery-confirm.min.js' %}"></script>
+    <script>
+
+        function showCheckinTimeDate() {
+            $.confirm({
+                title: 'Attendance!',
+                content: 'Do you want to continue?',
+                buttons: {
+                    Ok: function () {
+                        $.ajax({
+                            url: "{% url 'attendance_post' company_id=company_id company_staff_id=company_staff_id %}",
+                            type: "POST",
+                            data: $("#hddfields").serialize(),
+                            success: function (response) {
+                                if (response.status == "SUCCESS") {
+                                    $.confirm({
+                                        title: 'Success!',
+                                        content: 'Attendance Marked!',
+                                        buttons: {
+                                            Ok: function () {
+                                                location.reload()
+                                            },
+                                        }
+                                    });
+                                }
+                            }
+                        })
+                    },
+                    close: function () {
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#attendanceTable').DataTable({
+                "ajax": "{% url 'attendance_grid_Data'  company_id=company_id company_staff_id=company_staff_id %}",
+                "processing": true,
+                "serverSide": true,
+                "info": true,
+                "stateSave": true,
+                "sDom": 'lrtip',
+                "lengthMenu": [[10, 20, 50], [10, 20, 50]],
+                "columns": [
+                    {"data": "check_in"},
+                    {"data": "check_out"},
+                    {"data": "working_hours", 'orderable': false},
+                ],
+            });
+        });
+
+    </script>
+  </body>
+</html>

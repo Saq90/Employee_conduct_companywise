@@ -1,0 +1,60 @@
+parameters:
+  source_object_name: dbo.DTP_CAMP_CON
+  integration_id: MAI108
+  target_raw_object_path: axcrm-axdtp-integration/MAI108/dtp_camp_con/
+  target_trusted_object_path: axcrm-axdtp-integration/MAI108/dtp_camp_con/
+  source_extract_field: CHANGED_ON_DT
+  partition_column: run_date
+  extract_type: delta
+  header: True
+columns:
+- name: XN_LOY_MEMBER_CARD_ID
+  type: StringType
+- name: INTEGRATION_ID
+  type: StringType
+- name: XN_LOY_MEMBER_ID
+  type: StringType
+- name: XN_PR_CONTACT_ID
+  type: StringType
+- name: XN_OFFER_NUM_RANK1
+  type: StringType
+- name: XN_OFFER_NUM_RANK2
+  type: StringType
+- name: XN_OFFER_NUM_RANK3
+  type: StringType
+- name: XN_OFFER_NUM_RANK4
+  type: StringType
+- name: XN_VOUCHER_ID
+  type: StringType
+- name: CONTACT_ID
+  type: StringType
+- name: CAMPAIGN_ID
+  type: StringType
+- name: LD_WAVE_ID
+  type: StringType
+- name: OFFER_ID
+  type: StringType
+- name: SEGMENT_ID
+  type: StringType
+- name: CALL_STATUS
+  type: StringType
+- name: CREATED_DT
+  type: TimestampType
+- name: CAMP_START_DT
+  type: TimestampType
+- name: CAMP_END_DT
+  type: TimestampType
+- name: CHANGED_ON_DT
+  type: TimestampType
+- name: XN_EXPORTED_TS
+  type: TimestampType
+- name: XN_BU_ID
+  type: StringType
+- name: XN_OFFER_NUM
+  type: StringType
+- name: EXEC_STATUS
+  type: StringType
+
+
+
+

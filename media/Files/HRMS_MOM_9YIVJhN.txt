@@ -1,0 +1,17 @@
+MOM-21-03-2022
+
+1)timesheet,leave need to be grouped
+2)regularizations features to be added in attendance 
+3)merge timesheet features in my project
+4)my project UI need to be completed
+5)In my profile features, add documents upload(experience letter, offer letter, educational certificate, ID's proof),skills and certificate, reporting to 
+6)Section Leaves(apply for leave, leave balance, leave status) remove delete
+7)Attendance section need to be rearrange 
+8)Move sign in and sign out features in Dashboard 
+9) Dashboard- sign in sign out, Holidays in this month
+10) merge resignations status and create resiganation under resiganation features 
+11)Employee Income(Salary , salary slip ,Income tax Decalerations)
+12) add Another section Manager to add project 
+13) Download all client as a list
+14)In admin section Merge project , clients and leads 
+15)Holidays in calendar format 
