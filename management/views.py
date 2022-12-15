@@ -71,7 +71,7 @@ def createInvoice(request,company_id, company_staff_id):
         global formset, form
         heading_message = 'Formset Demo'
         if request.method == 'GET':
-            all_invoices = Invoice.objects.all()
+            all_invoices = Invoice.objects.filter(company__id=company_id)
             formset = LineItemFormset(request.GET or None)
             form = InvoiceForm(request.GET or None)
         elif request.method == 'POST':
@@ -85,6 +85,8 @@ def createInvoice(request,company_id, company_staff_id):
                                                  date=form.data["date"],
                                                  due_date=form.data["due_date"],
                                                  project=form.data["project"],
+                                                 company_id = company_id,
+
                                                  )
 
             if formset.is_valid():
@@ -105,13 +107,14 @@ def createInvoice(request,company_id, company_staff_id):
                                  amount=amount).save()
                 invoice.total_amount = total
                 invoice.save()
-                try:
-                    invoice_pdf_obj = GeneratePdf()
-                    invoice_pdf_obj = invoice_pdf_obj.get(request, invoice.id,company_id, company_staff_id)
-                except Exception as e:
-                    print(f"********{e}********")
-                # return redirect('/management/invoices/')
-                return invoice_pdf_obj
+            return redirect(f'/management/invoice-create/{company_id}/{company_staff_id}')
+                # try:
+                #     invoice_pdf_obj = GeneratePdf()
+                #     invoice_pdf_obj = invoice_pdf_obj.get(request, invoice.id,company_id, company_staff_id)
+                # except Exception as e:
+                #     print(f"********{e}********")
+                # # return redirect('/management/invoices/')
+                # return invoice_pdf_obj
 
         context = {
             "title": "Invoice Generator",
@@ -206,9 +209,11 @@ class GeneratePdf(View):
 
 
 class InvoiceRemove(View):
-     def get(self,request,id):
-        invoice=Invoice.objects.get(id=id)
-        invoice.delete()
-        messages.success(request,f"{invoice} deleted successfully")
-        return HttpResponseRedirect('/management/invoice-create/')
+     def get(self,request,company_id, company_staff_id,id):
+        if company_id:
+            invoice=Invoice.objects.get(id=id)
+            invoice.delete()
+            messages.success(request,f"{invoice} deleted successfully")
+            return redirect(f'/management/invoice-create/{company_id}/{company_staff_id}')
+
 

@@ -297,7 +297,7 @@ def All_manager_List_View(request):
     return render(request, 'administration/all-manager-list.html', {'manager': manager})
 
 
-@login_required
+
 def Remove_manager_List(request, id,company_id, company_staff_id):
     if company_id:
         manager = Manager.objects.get(id=id)
@@ -307,14 +307,31 @@ def Remove_manager_List(request, id,company_id, company_staff_id):
     return HttpResponseRedirect('/administration/all_manager_list')
 
 
-@login_required
-def Remove_manager(request, id,company_id, company_staff_id):
-    if company_id:
-        manager = Manager.objects.get(company_staff_id=company_staff_id)
-        CompanyStaff.objects.get(id=manager.company_staff_id).delete()
-        manager.delete()
-        messages.success(request, "deleted successfully")
-        return HttpResponseRedirect('/administration/all_manager',{'company_id':company_id, 'company_staff_id':company_staff_id})
+
+def Remove_manager(request, id,company_id,company_staff_id):
+    manager_list = Manager.objects.filter(id=id)
+    if manager_list.count() > 0:
+        managers = manager_list.first()
+        try:
+            CompanyStaff.objects.get(id=managers.user.id).delete()
+
+            managers.delete()
+            messages.success(request, "deleted successfully")
+            return redirect(f'/administration/all_manager/{company_id}/{company_staff_id}')
+        except:
+            return redirect(f'/administration/all_manager/{company_id}/{company_staff_id}')
+    print('hii22')
+    return redirect(f'/administration/all_manager/{company_id}/{company_staff_id}')
+
+
+#
+# def Remove_manager(request, id,company_id, company_staff_id):
+#     if company_id:
+#         manager = Manager.objects.get(id=id)
+#         CompanyStaff.objects.get(id=manager.company_staff_id).delete()
+#         manager.delete()
+#         messages.success(request, "deleted successfully")
+#         return HttpResponseRedirect('/administration/all_manager',{'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
 @login_required
@@ -450,11 +467,12 @@ class CreateClientsGridView(generic.ListView):
 
 
 class ClientRemove(View):
-    def get(self, request, id):
-        client = Client.objects.get(id=id)
-        client.delete()
-        messages.success(request, 'deleted successfuully')
-        return HttpResponseRedirect('/administration/clients_list')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            client = Client.objects.get(id=id)
+            client.delete()
+            messages.success(request, 'deleted successfuully')
+            return redirect(f'/administration/client_list/{company_id}/{company_staff_id}')
 
 
 class ClientRemoveGrid(View):
@@ -566,11 +584,12 @@ def All_lead_View(request,company_id, company_staff_id):
 
 
 class LeadsRemove(View):
-    def get(self, request, id):
-        lead = Lead.objects.get(id=id)
-        lead.delete()
-        messages.success(request, f"{lead} deleted successfully")
-        return HttpResponseRedirect('/administration/leads_list')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            lead = Lead.objects.get(id=id)
+            lead.delete()
+            messages.success(request, f"{lead} deleted successfully")
+        return redirect(f'/administration/leads_list/{company_id}/{company_staff_id}')
 
 
 class LeadManage(UpdateView):
@@ -720,10 +739,11 @@ def Project_list(request,company_id, company_staff_id):
 
 
 class ProjectRemove(View):
-    def get(self, request, id):
-        project = Task.objects.get(id=id)
-        project.delete()
-        return HttpResponseRedirect('/administration/projectlist/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            project = Task.objects.get(id=id)
+            project.delete()
+            return redirect(f'/administration/projectlist/{company_id}/{company_staff_id}')
 
 
 def leaves_list(request,company_id, company_staff_id):
@@ -864,10 +884,12 @@ def Balance_list(request,company_id, company_staff_id):
 
 
 class BalanceRemove(View):
-    def get(self, request, id):
-        balance = ManagerLeave.objects.get(id=id)
-        balance.delete()
-        return HttpResponseRedirect('/administration/balancelist/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            balance = ManagerLeave.objects.get(id=id)
+            balance.delete()
+            return redirect(f'/administration/balancelist/{company_id}/{company_staff_id}')
+
 
 
 def notifications(request,company_id, company_staff_id):
@@ -948,11 +970,12 @@ def attendance_Edit_View(request,company_id, company_staff_id):
 
 
 class AttendanceRemove(View):
-    def get(self, request, id):
-        attendance = Attendance.objects.get(id=id)
-        attendance.delete()
-        messages.success(request, f"{attendance} deleted successfully")
-        return HttpResponseRedirect('/administration/attendancee/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            attendance = Attendance.objects.get(id=id)
+            attendance.delete()
+            messages.success(request, f"{attendance} deleted successfully")
+            return redirect(f'/administration/attendancee/{company_id}/{company_staff_id}')
 
 
 class AttendanceManage(UpdateView):
@@ -1182,11 +1205,12 @@ def holiday_list(request,company_id, company_staff_id):
 
 
 class delholiday(View):
-    def get(self, request, id):
-        holyday = holiday.objects.get(id=id)
-        holyday.delete()
-        messages.success(request, f"{holyday} deleted successfully")
-        return HttpResponseRedirect('/administration/holidaylist/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            holyday = holiday.objects.get(id=id)
+            holyday.delete()
+            messages.success(request, f"{holyday} deleted successfully")
+            return redirect(f'/administration/holidaylist/{company_id}/{company_staff_id}')
 
 
 class PostListView(ListView):
@@ -1278,7 +1302,7 @@ def PostDetailView(request,company_id, company_staff_id,id):
     # Old Code
     if company_id:
         # company_staff = CompanyStaff.objects.get(id=company_staff_id)
-        document_list = get_object_or_404(Post, id=id)
+        document_list = Post.objects.filter(id=id)
         # document_list = Post.objects.filter(user=company_staff)
         return render(request, 'administration/employee_documents.html',
                       {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
@@ -1298,11 +1322,12 @@ def PostDetailView(request,company_id, company_staff_id,id):
 #
 
 class PostDeleteView(View):
-    def get(self, request, id):
-        posts = Post.objects.get(id=id)
-        posts.delete()
-        messages.success(request, f"{posts} deleted successfully")
-        return HttpResponseRedirect('/administration/alldocument')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            posts = Post.objects.get(id=id)
+            posts.delete()
+            messages.success(request, f"{posts} deleted successfully")
+            return redirect(f'/administration/all_document_View/{company_id}/{company_staff_id}')
 
 def DepartmentCreateView(request,company_id, company_staff_id):
     if company_id:
@@ -1377,11 +1402,12 @@ def department_Edit_View(request,company_id, company_staff_id):
 
 
 class DepartmentRemove(View):
-    def get(self, request, id):
-        department = Department.objects.get(id=id)
-        department.delete()
-        messages.success(request, f"{department} deleted successfully")
-        return HttpResponseRedirect('/administration/department_lst')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            department = Department.objects.get(id=id)
+            department.delete()
+            messages.success(request, f"{department} deleted successfully")
+            return redirect(f'/administration/department_lst/{company_id}/{company_staff_id}')
 
 
 class ManageDepartment(UpdateView):
@@ -1657,11 +1683,12 @@ def Mattendance_Edit_View(request,company_id, company_staff_id):
             return redirect(f'/administration/mattendancee/{company_id}/{company_staff_id}')
 
 class mAttendanceRemove(View):
-    def get(self, request, id):
-        attendance = ManagerAttendance.objects.get(id=id)
-        attendance.delete()
-        messages.success(request, f"{attendance} deleted successfully")
-        return HttpResponseRedirect('/administration/index/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            attendance = ManagerAttendance.objects.get(id=id)
+            attendance.delete()
+            messages.success(request, f"{attendance} deleted successfully")
+            return redirect(f'/administration/mattendancee/{company_id}/{company_staff_id}')
 
 
 class mAttendanceManage(UpdateView):
@@ -1758,10 +1785,10 @@ def Assign_list(request,company_id, company_staff_id):
 
 
 class AssignRemove(View):
-    def get(self, request, id):
+    def get(self, request,company_id, company_staff_id, id):
         assign = Asign.objects.get(id=id)
         assign.delete()
-        return HttpResponseRedirect('/administration/index/')
+        return redirect(f'/administration/assignlist/{company_id}/{company_staff_id}')
 
 
 def All_document_Views(request,company_id, company_staff_id):
@@ -1811,15 +1838,32 @@ class MPostListView(LoginRequiredMixin, ListView):
         queryset = ManagerPost.objects.filter(user=self.request.user.manager)
         return queryset
 
+def MPostDetailView(request,company_id, company_staff_id,id):
+    if request.method == "POST":
+        data = json.loads(request.body.decode('utf-8'))
+        document_obj_id = data.get('id', None)
+        document_obj = Post.objects.get(pk=document_obj_id)
+        return JsonResponse(document_obj.to_json())
 
-class MPostDetailView(DetailView):
-    model = ManagerPost
-    template_name = 'administration/manager_documents.html'
+    # Old Code
+    if company_id:
+        # company_staff = CompanyStaff.objects.get(id=company_staff_id)
+        document_list = ManagerPost.objects.filter(id=id)
+        # document_list = Post.objects.filter(user=company_staff)
+        return render(request, 'administration/manager_documents.html',
+                      {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
+
+
+# class MPostDetailView(DetailView):
+#     model = ManagerPost
+#     template_name = 'administration/manager_documents.html'
 
 
 class MPostDeleteView(View):
-    def get(self, request, id):
-        posts = ManagerPost.objects.get(id=id)
-        posts.delete()
-        messages.success(request, f"{posts} deleted successfully")
-        return HttpResponseRedirect('/administration/malldocument')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            posts = ManagerPost.objects.get(id=id)
+            posts.delete()
+            messages.success(request, f"{posts} deleted successfully")
+            return redirect(f'/administration/manager_document_View/{company_id}/{company_staff_id}')
+

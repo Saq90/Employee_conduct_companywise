@@ -8,6 +8,10 @@ from dstt import settings
 
 
 class Invoice_form(forms.ModelForm):
+    def __init__(self, company_id, *args, **kwargs):
+        super(Invoice_form, self).__init__(*args, **kwargs)
+        self.fields['invoice'].queryset = Invoice.objects.filter(id__in=company_id)
+
     class Meta:
         model = Invoice
         fields = "__all__"

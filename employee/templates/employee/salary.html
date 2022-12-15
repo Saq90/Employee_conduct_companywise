@@ -136,7 +136,7 @@
                           <td>{{ item.employee.employee_department}} </td>
                           <td>{{ item.month|date:"F Y " }}</td>
                           <td>{{ item.basic|intcomma}}</td>
-                          <td><a  class="btn btn-outline-orangeyellow" href="{% url 'salary-download' id=item.id %}">Download</a></td>
+                          <td><a  class="btn btn-outline-orangeyellow" href="{% url 'salary-download' company_id=company_id company_staff_id=company_staff_id id=item.id %}">Download</a></td>
                         </tr>
                        {% endfor %}
                       </tbody>

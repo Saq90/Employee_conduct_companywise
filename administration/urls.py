@@ -36,7 +36,7 @@ urlpatterns = [
     path('editClient/<int:company_id>/<int:company_staff_id>',views.EditClient,name='editClient'),
     path('clients_list/',views.CreateClientsListView.as_view(),name='clients_list' ),
     path('clients_grid/<int:company_id>/<int:company_staff_id>',views.CreateClientsGridView.as_view(),name='clients_grid' ),
-    path('clients_remove/<int:id>',views.ClientRemove.as_view(),name='clients_remove' ),
+    path('clients_remove/<int:company_id>/<int:company_staff_id>/<int:id>',views.ClientRemove.as_view(),name='clients_remove' ),
     path('clients_remove_grid/<int:id>',views.ClientRemoveGrid.as_view(),name='clients_remove_grid' ),
     path('client_manage_grid/<int:pk>',views.ClientManageGrid.as_view(),name='client_manage_grid' ),
     path('client_manage_list/<int:pk>',views.ClientManageList.as_view(),name='client_manage_list' ),
@@ -48,7 +48,7 @@ urlpatterns = [
 #     path('leads/',views.CreateLeadView.as_view(),name='leads' ),
     path('leads/<int:company_id>/<int:company_staff_id>', views.CreateLeadView, name='leads'),
     path('leads_list/<int:company_id>/<int:company_staff_id>',views.All_lead_View,name='leads_list'),
-    path('leads_remove/<int:id>',views.LeadsRemove.as_view(),name='leads_remove' ),
+    path('leads_remove/<int:company_id>/<int:company_staff_id>/<int:id>',views.LeadsRemove.as_view(),name='leads_remove' ),
     path('leads_manage/<int:pk>',views.LeadManage.as_view(),name='leads_manage' ),
     path('edit_lead/<int:company_id>/<int:company_staff_id>', views.lead_Edit_View, name='edit_lead'),
 # ------------------------------/Lead--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ urlpatterns = [
     path('task/<int:pk>', views.TaskDetailView.as_view(), name='task-detail'),
     path('task/<int:pk>/delete', views.TaskDeleteView.as_view(), name='task-delete'),
     path('projectlist/<int:company_id>/<int:company_staff_id>', views.Project_list, name='projectlist'),
-    path('project_remove/<id>', views.ProjectRemove.as_view(), name='project_remove'),
+    path('project_remove/<int:company_id>/<int:company_staff_id>/<id>', views.ProjectRemove.as_view(), name='project_remove'),
 
     path('leaves/pending/all/<int:company_id>/<int:company_staff_id>', views.leaves_list, name='leaveslist'),
     path('leaves/approved/all/<int:company_id>/<int:company_staff_id>', views.leaves_approved_list, name='approvedleaveslist'),
@@ -84,7 +84,7 @@ urlpatterns = [
     path('leaves/all/view/<int:id>/', views.leaves_view, name='userleaveview'),
 
     path('balancelist/<int:company_id>/<int:company_staff_id>/', views.Balance_list, name='balancelist'),
-    path('balance_remove/<id>', views.BalanceRemove.as_view(), name='balance_remove'),
+    path('balance_remove/<int:company_id>/<int:company_staff_id>/<id>', views.BalanceRemove.as_view(), name='balance_remove'),
 
     path('notifications/<int:company_id>/<int:company_staff_id>', views.notifications,name='notifications'),
     path('createnotifications/<int:company_id>/<int:company_staff_id>', views.createnotifications,
@@ -93,7 +93,7 @@ urlpatterns = [
 
     path('attendancee/<int:company_id>/<int:company_staff_id>', views.attendance, name='attendancee'),
     path('getattendance/', views.getattendance, name='getattendance'),
-    path('attendance_remove/<id>', views.AttendanceRemove.as_view(), name='attendance_remove'),
+    path('attendance_remove/<int:company_id>/<int:company_staff_id>/<id>', views.AttendanceRemove.as_view(), name='attendance_remove'),
     path('attendance_manage/<int:pk>', views.AttendanceManage.as_view(), name='attendance_manage'),
     path('edit_attendance/<int:company_id>/<int:company_staff_id>', views.attendance_Edit_View, name='edit_attendance'),
 
@@ -112,7 +112,7 @@ urlpatterns = [
     path('holidays/<int:company_id>/<int:company_staff_id>', views.holidays,  name='holidays'),
     path('fnholidays/', views.fnholidays, name='fnholiday'),
     path('getdatas/', views.getdatas, name='getdata'),
-    path('delholiday/<int:id>/', views.delholiday.as_view(), name='delholiday'),
+    path('delholiday/<int:company_id>/<int:company_staff_id>/<int:id>/', views.delholiday.as_view(), name='delholiday'),
     path('holidaylist/<int:company_id>/<int:company_staff_id>', views.holiday_list, name='holidaylist'),
 
     path('alldocument/<int:company_id>/<int:company_staff_id>', views.PostListView.as_view(), name='alldocument'),
@@ -121,14 +121,14 @@ urlpatterns = [
     path('allpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.PostDetailView, name='allpost'),
     path('search/', views.search, name='search'),
     path('all_document_View/<int:company_id>/<int:company_staff_id>', views.All_document_View, name='all_document_View'),
-    path('post-delete/<int:id>', views.PostDeleteView.as_view(), name='post-delete'),
+    path('post-delete/<int:company_id>/<int:company_staff_id>/<int:id>', views.PostDeleteView.as_view(), name='post-delete'),
 
 
 
     # path('department/', views.DepartmentCreateView.as_view(), name='department'),
     path('department/<int:company_id>/<int:company_staff_id>', views.DepartmentCreateView, name='department'),
     # path('department_lst/', views.DepartmentList.as_view(), name='department_lst'),
-    path('department_remove/<int:id>', views.DepartmentRemove.as_view(), name='department_remove'),
+    path('department_remove/<int:company_id>/<int:company_staff_id>/<int:id>', views.DepartmentRemove.as_view(), name='department_remove'),
     path('department_manage/<int:pk>', views.ManageDepartment.as_view(), name='department_manage'),
     path('department_edit/<int:company_id>/<int:company_staff_id>', views.department_Edit_View, name='department_edit'),
     path('department_lst/<int:company_id>/<int:company_staff_id>', views.DepartmentList, name='department_lst'),
@@ -160,7 +160,7 @@ urlpatterns = [
 
     path('mattendancee/<int:company_id>/<int:company_staff_id>', views.mattendance, name='mattendancee'),
     # path('mgetattendance/', views.mgetattendance, name='mgetattendance'),
-    path('mattendance_remove/<id>', views.mAttendanceRemove.as_view(), name='mattendance_remove'),
+    path('mattendance_remove/<int:company_id>/<int:company_staff_id>/<id>', views.mAttendanceRemove.as_view(), name='mattendance_remove'),
     path('mattendance_manage/<int:pk>', views.mAttendanceManage.as_view(), name='mattendance_manage'),
     path('mattendancesearch/<int:company_id>/<int:company_staff_id>', views.mAttendancesearch, name='mattendancesearch'),
     path('mattendanceEdit/<int:company_id>/<int:company_staff_id>', views.Mattendance_Edit_View, name='mattendanceEdit'),
@@ -170,14 +170,14 @@ urlpatterns = [
     path('assign/<int:pk>', views.assignDetailView.as_view(), name='assign-detail'),
     path('assign/<int:pk>/delete', views.aasignDeleteView.as_view(), name='assign-delete'),
     path('assignlist/<int:company_id>/<int:company_staff_id>', views.Assign_list, name='assignlist'),
-    path('assign_remove/<id>', views.AssignRemove.as_view(), name='assign_remove'),
+    path('assign_remove/<int:company_id>/<int:company_staff_id>/<id>', views.AssignRemove.as_view(), name='assign_remove'),
 
     path('manager_document_View/<int:company_id>/<int:company_staff_id>', views.All_document_Views, name='manager_document_View'),
 
     path('malldocument', views.ManagerPostListView.as_view(), name='malldocument'),
     path('muser/', views.MPostListView.as_view(), name='muser-posts'),
-    path('mallpost/<int:pk>/', views.MPostDetailView.as_view(), name='mallpost'),
+    path('mallpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.MPostDetailView, name='mallpost'),
     path('search/', views.search, name='search'),
-    path('mpost-delete/<int:id>', views.MPostDeleteView.as_view(), name='mpost-delete'),
+    path('mpost-delete/<int:company_id>/<int:company_staff_id>/<int:id>', views.MPostDeleteView.as_view(), name='mpost-delete'),
 
 ]

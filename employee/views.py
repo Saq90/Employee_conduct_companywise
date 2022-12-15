@@ -468,7 +468,7 @@ def BalanceLeaveView(request,company_id, company_staff_id):
     context['balance']= queryset
     context['company_id']= company_id
     context['company_staff_id']= company_staff_id
-    return render(request, 'employee/salary.html', context)
+    return render(request, 'employee/leave-balance.html', context)
 
 
 # class BalanceLeaveView(ListView, LoginRequiredMixin):
@@ -606,10 +606,11 @@ def EntryDetailView(request,company_id, company_staff_id):
 
 
 class EntryRemove(View):
-    def get(self, request, id):
-        entry = Entries.objects.get(id=id)
-        entry.delete()
-        return HttpResponseRedirect('/employee/entries-detail/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            entry = Entries.objects.get(id=id)
+            entry.delete()
+            return redirect(f'/employee/entries-detail/{company_id}/{company_staff_id}')
 
 
 class documents(generic.CreateView):

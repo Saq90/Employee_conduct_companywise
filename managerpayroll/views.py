@@ -85,12 +85,13 @@ def SalaryDetailView(request, company_id, company_staff_id, id=None,):
 #
 
 class SalaryRemove(View):
-    def get(self, request, id):
-        salary = Salary.objects.get(id=id)
-        print(salary)
-        salary.delete()
-        messages.success(request, f"{salary} deleted successfully")
-        return HttpResponseRedirect(reverse('msalary'))
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            salary = Salary.objects.get(id=id)
+            print(salary)
+            salary.delete()
+            messages.success(request, f"{salary} deleted successfully")
+            return redirect(f'/managerpayroll/msalary/{company_id}/{company_staff_id}')
 
 
 class Update_salary_View(UpdateView):

@@ -139,7 +139,7 @@
 
                       <button type="button" class="btn bg-gradient-deepblue" data-bs-toggle="modal" data-bs-target="#viewmanagerModal" id="viewmanagerBtn"  onclick="manager_details_fetch('{{manager.pk}}')">View</button>
                       <button type="button" class="btn bg-gradient-quepal" data-bs-toggle="modal" data-bs-target="#editmanagerModal"  id="editmanagerBtn"  onclick="manager_id_fetch('{{manager.pk}}')">Edit</button>
-                      <button type="button" class="btn bg-gradient-ibiza" data-bs-toggle="modal" data-bs-target="#deletemanagerModal" id="deletemanagerBtn" onClick="getId('{{manager.company_staff_id}}')" >Delete</button>
+                      <button type="button" class="btn bg-gradient-ibiza" data-bs-toggle="modal" data-bs-target="#deletemanagerModal" id="deletemanagerBtn" onClick="getId('{{manager.id}}')" >Delete</button>
                     </div>                    
                     <div class="modal" id="viewmanagerModal">                      
                       <div class="modal-dialog w-80">                        
@@ -798,10 +798,10 @@
 
 
    <script>
-  	function getId(company_staff_id) {
+  	function getId(id) {
 		// alert(id)
 		var a =document.getElementById('delete');
-		a.href = "/administration/Remove_manager/"+company_staff_id;
+		a.href = "/administration/Remove_manager/{{company_id}}/{{company_staff_id}}/"+id;
 	}
 
    </script>

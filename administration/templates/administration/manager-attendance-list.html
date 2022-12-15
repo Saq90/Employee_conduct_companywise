@@ -77,7 +77,7 @@
                                 </button>                              
                               </li>
                               <li>
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteBtn">
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteBtn" onClick="getId('{{i.id}}')">
                                   Delete
                                 </button>                              
                               </li>
@@ -120,7 +120,9 @@
                                   </div>
                                   <div class="modal-body text-center">                                  
                                     <p>Are you sure want to delete?</p>
-                                    <button type="button" class="btn btn-outline-orangeyellow w-100 mb-2">Delete</button>
+                                    <div class="col-12">
+                                  <a href="javascript:void(0);"  id="delete" class="btn btn-outline-orangeyellow w-100 mb-2">Delete</a>
+                                   </div>
                                     <button type="button" class="btn btn-outline-orangeyellow w-100" data-bs-dismiss="modal">Cancel</button>
                                   </div>
                                 </div>
@@ -186,6 +188,16 @@
       }
 
    </script>
+ <script>
+
+  	function getId(id) {
+		// alert(id)
+		var a =document.getElementById('delete');
+		a.href = "/administration/mattendance_remove/{{company_id}}/{{company_staff_id}}/"+id;
+	}
+
+   </script>
+
 
     
   </body>

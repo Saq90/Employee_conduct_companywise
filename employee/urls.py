@@ -49,7 +49,7 @@ urlpatterns = [
 
     path('entries-create/', views.EntriesCreateView, name='entries-create'),
     path('entries-detail/<int:company_id>/<int:company_staff_id>', views.EntryDetailView, name='entries-detail'),
-    path('entry_remove/<id>', views.EntryRemove.as_view(), name='entry_remove'),
+    path('entry_remove/<int:company_id>/<int:company_staff_id>/<id>', views.EntryRemove.as_view(), name='entry_remove'),
 
     path('regularization_required/<int:company_id>/<int:company_staff_id>', views.regularization_required_attendance, name='regularization_required'),
 

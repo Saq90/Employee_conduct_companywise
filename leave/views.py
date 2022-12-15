@@ -67,7 +67,9 @@ def Balance_list(request,company_id, company_staff_id):
 
 
 class BalanceRemove(View):
-    def get(self, request, id):
-        balance = Leave.objects.get(id=id)
-        balance.delete()
-        return HttpResponseRedirect('/leave/balancelists/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            balance = Leave.objects.get(id=id)
+            balance.delete()
+            return redirect(f'/leave/balancelists/{company_id}/{company_staff_id}')
+

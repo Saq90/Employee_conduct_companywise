@@ -8,7 +8,7 @@ urlpatterns = [
     # path('salary/<int:company_id>/<int:company_staff_id>/<int:pk>/', SalaryDetailView.as_view(), name='salary-detail'),
     path('salary/<int:company_id>/<int:company_staff_id>/<int:id>/', SalaryDetailView, name='salary-detail'),
     # path('salary_remove/<int:id>/', views.SalaryRemove.as_view(), name='salary_remove'),
-    path('salary_remove/<int:id>', views.SalaryRemove.as_view(), name='salary_remove'),
+    path('salary_remove/<int:company_id>/<int:company_staff_id>/<int:id>', views.SalaryRemove.as_view(), name='salary_remove'),
 
     path('salary_update/', views.Update_salary_View, name='salary_update'),
     path('salary-download/<int:company_id>/<int:company_staff_id>/<int:id>', views.GeneratePdf.as_view(), name='salary-download'),

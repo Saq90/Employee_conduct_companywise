@@ -512,10 +512,12 @@ def Project_list(request,company_id, company_staff_id):
 
 
 class ProjectRemove(View):
-    def get(self, request, id):
-        project = MTask.objects.get(id=id)
-        project.delete()
-        return HttpResponseRedirect('/managers/mprojectlist/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            project = MTask.objects.get(id=id)
+            project.delete()
+            return redirect(f'/managers/mprojectlist/{company_id}/{company_staff_id}')
+
 
 
 def TaskListView(request,company_id, company_staff_id):
@@ -581,11 +583,12 @@ def mattendance_Edit_View(request,company_id, company_staff_id):
 
 
 class AttendanceRemove(View):
-    def get(self, request, id):
-        attendance = Attendance.objects.get(id=id)
-        attendance.delete()
-        messages.success(request, f"{attendance} deleted successfully")
-        return HttpResponseRedirect('/managers/mnattendancee/')
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            attendance = Attendance.objects.get(id=id)
+            attendance.delete()
+            messages.success(request, f"{attendance} deleted successfully")
+            return redirect(f'/managers/mnattendancee/{company_id}/{company_staff_id}')
 
 
 class AttendanceManage(UpdateView):

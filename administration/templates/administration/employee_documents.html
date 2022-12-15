@@ -18,6 +18,7 @@
       <div><div class="media-body" style="margin-left:260px;margin-top:50px;">
            <table class="table table-fluid table-bordered table-hover">
           <tbody>
+               {% for object in  document_list %}
            <tr>
 <!--               <h2>{{ object.user }}</h2>-->
         </tr>
@@ -41,6 +42,7 @@
              <td> <a href="{{ object.skill_certificate.url }}"  download ><img src="{{ object.skill_certificate.url }}" alt="" class="img-fluid "></a>
             <a href="{{ object.skill_certificate.url }}"  download class="text-dark"><h5>{{ object.skill_certificate }}</h5></a></td>
         </tr>
+             {% endfor %}
     </tbody>
            </table>
       </div>

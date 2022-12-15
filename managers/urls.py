@@ -43,11 +43,11 @@ urlpatterns = [
     path('mtask/<int:pk>', views.TaskDetailViews.as_view(), name='mtask-detail'),
     path('mtask/<int:pk>/delete', views.TaskDeleteViews.as_view(), name='mtask-delete'),
     path('mprojectlist/<int:company_id>/<int:company_staff_id>', views.Project_list, name='mprojectlist'),
-    path('mproject_remove/<id>', views.ProjectRemove.as_view(), name='mproject_remove'),
+    path('mproject_remove/<int:company_id>/<int:company_staff_id>/<id>', views.ProjectRemove.as_view(), name='mproject_remove'),
 
     path('mnattendancee/<int:company_id>/<int:company_staff_id>', views.attendanc, name='mnattendancee'),
     path('mnattendancee_edit/<int:company_id>/<int:company_staff_id>', views.mattendance_Edit_View, name='mnattendancee_edit'),
-    path('mnattendance_remove/<id>', views.AttendanceRemove.as_view(), name='mnattendance_remove'),
+    path('mnattendance_remove/<int:company_id>/<int:company_staff_id>/<id>', views.AttendanceRemove.as_view(), name='mnattendance_remove'),
     path('mnattendance_manage/<int:pk>', views.AttendanceManage.as_view(), name='mnattendance_manage'),
     path('mregularization_required/<int:company_id>/<int:company_staff_id>', views.regularization_required_attendance, name='mregularization_required'),
 

@@ -6,12 +6,44 @@
   <component name="ChangeListManager">
     <list default="true" id="7aceaa1e-a414-4f3d-909a-979172006f6a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administration/templates/administration/all-employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/all-employees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/all-manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/all-manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/clients-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/clients-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/department.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-all-documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-all-documents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-attendance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-attendance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/employee_documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/employee_documents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/leads.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/leads.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/leaves-balance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/leaves-balance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/list-holiday.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/list-holiday.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/list-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/list-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-all-documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-all-documents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager-attendance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager-attendance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/manager_documents.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/manager_documents.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/administration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/administration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managerpayroll/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/salary.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/salary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/employee/view-timesheet.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/employee/view-timesheet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/templates/leave/leaves-balance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/leave/templates/leave/leaves-balance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/leave/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/leave/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/templates/management/invoices.html" beforeDir="false" afterPath="$PROJECT_DIR$/management/templates/management/invoices.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/templates/managerpayroll/manager-salary.html" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/templates/managerpayroll/manager-salary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/managerpayroll/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/attendance-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/attendance-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/list-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/list-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/templates/payroll/employee-salary.html" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/templates/payroll/employee-salary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,36 +182,6 @@
           <url>file://$PROJECT_DIR$/employee/views.py</url>
           <line>263</line>
           <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/employee/views.py</url>
-          <line>157</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/employee/views.py</url>
-          <line>165</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/administration/views.py</url>
-          <line>172</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/administration/views.py</url>
-          <line>178</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/managerpayroll/views.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/managerpayroll/views.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
