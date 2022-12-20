@@ -35,13 +35,13 @@ class SalaryView(View):
 
     def get(self, request,company_id, company_staff_id):
         salary = Salary.objects.filter(employee__user__company__id=company_id)
-        form = SalaryForm()
+        form = SalaryForm(company_id)
         context = {'salary': salary, 'form': form,'company_id':company_id, 'company_staff_id':company_staff_id}
         return render(request, 'payroll/employee-salary.html', context)
 
     def post(self, request,company_id, company_staff_id):
         if company_id:
-            form = SalaryForm(request.POST or None)
+            form = SalaryForm(company_id,request.POST,request.FILES)
             if request.method == 'POST':
                 if form.is_valid():
                     form.save()
@@ -50,10 +50,8 @@ class SalaryView(View):
 
 
 def SalaryDetailView(request, company_id, company_staff_id, id=None,):
-    print("***********************")
     # getting the template
     salary = get_object_or_404(Salary, id=id)
-    print(salary)
 
     context = {
         "employee": salary.employee,
@@ -80,15 +78,6 @@ def SalaryDetailView(request, company_id, company_staff_id, id=None,):
     return render(request, "payroll/employee-payslip.html", context)
 
 
-# class SalaryDetailView(DetailView):
-#     model = Salary
-#     template_name = "payroll/employee-payslip.html"
-#
-#     def get_context_data(self, company_id, company_staff_id, **kwargs):
-#         context = super(SalaryDetailView, self).get_context_data(**kwargs)
-#         return context
-
-
 class SalaryRemove(View):
     def get(self, request,company_id, company_staff_id, id):
         if company_id:
@@ -105,7 +94,6 @@ class Update_salary_View(UpdateView):
     context_object_name = "salary_update"
     template_name = 'payroll/employee-salary.html'
     success_url = ("/payroll/salary/")
-
 
 
 class GeneratePdf(View):
@@ -139,7 +127,6 @@ class GeneratePdf(View):
 
 
         }
-        print('context: ',context)
 
         pdf = render_to_pdf(context)
 
@@ -148,7 +135,6 @@ class GeneratePdf(View):
 
     def post(self,request,id=None,*args, **kwargs):
         print('0'*10)
-
 
 
 class CreateSalaryView(generic.CreateView):

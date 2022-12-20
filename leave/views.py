@@ -13,6 +13,7 @@ from .models import Leave
 from django.views.generic import DetailView, ListView
 from django.db.models import Q
 
+
 def BalanceCreateView(request,company_id, company_staff_id):
     if company_id:
         if request.method == "POST":
@@ -28,26 +29,6 @@ def BalanceCreateView(request,company_id, company_staff_id):
 
         else:
             return render(request,"leave/add-leaves-balance.html",{'assigned':Employee.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
-
-#
-# class BalanceCreateView(CreateView, LoginRequiredMixin):
-#     model = Leave
-#     fields = ['user', 'balancedays']
-#
-#     def dispatch(self, request, company_id, company_staff_id, *args, **kwargs):
-#         print('Dispatch function called')
-#         company_staff = CompanyStaff.objects.filter(pk=company_staff_id)
-#         if company_staff.exists():
-#             if company_staff.first().is_authenticated:
-#                 return super().dispatch(request, company_id, company_staff_id, *args, **kwargs)
-#             else:
-#                 return redirect('/')
-#         else:
-#             return redirect('/')
-#
-#     def form_valid(self, form):
-#         form.instance.created_by = self.request.user
-#         return super().form_valid(form)
 
 
 class BalanceDetailView(DetailView, LoginRequiredMixin):

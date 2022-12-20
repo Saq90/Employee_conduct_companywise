@@ -121,7 +121,6 @@ def All_Employee_View(request, company_id, company_staff_id):
                         })
 
 
-@login_required
 def All_Employee_List_View(request):
     AllEmployee = Employee.objects.filter(employee_status="Active")
     return render(request, 'administration/employees_list.html', {'Employees': AllEmployee})
@@ -159,7 +158,6 @@ def Employee_Edit_View(request, company_id,company_staff_id):
             return redirect(f'/administration/all_employee/{company_id}/{company_staff_id}')
 
 
-
 def Remove_Employee_List(request, id):
     employees = Employee.objects.get(id=id)
     User.objects.get(id=employees.user.id).delete()
@@ -168,7 +166,6 @@ def Remove_Employee_List(request, id):
     return HttpResponseRedirect('/administration/all_employee_list')
 
 
-# @login_required
 def Remove_Employee(request, id,company_id,company_staff_id):
     employees_list = Employee.objects.filter(id=id)
     if employees_list.count() > 0:
@@ -291,11 +288,9 @@ def manager_Edit_View(request,company_id, company_staff_id):
             return redirect(f'/administration/all_manager/{company_id}/{company_staff_id}')
 
 
-@login_required
 def All_manager_List_View(request):
     manager = Manager.objects.filter(manager_status="Active")
     return render(request, 'administration/all-manager-list.html', {'manager': manager})
-
 
 
 def Remove_manager_List(request, id,company_id, company_staff_id):
@@ -305,7 +300,6 @@ def Remove_manager_List(request, id,company_id, company_staff_id):
         manager.delete()
         messages.success(request, "deleted successfully")
     return HttpResponseRedirect('/administration/all_manager_list')
-
 
 
 def Remove_manager(request, id,company_id,company_staff_id):
@@ -324,21 +318,9 @@ def Remove_manager(request, id,company_id,company_staff_id):
     return redirect(f'/administration/all_manager/{company_id}/{company_staff_id}')
 
 
-#
-# def Remove_manager(request, id,company_id, company_staff_id):
-#     if company_id:
-#         manager = Manager.objects.get(id=id)
-#         CompanyStaff.objects.get(id=manager.company_staff_id).delete()
-#         manager.delete()
-#         messages.success(request, "deleted successfully")
-#         return HttpResponseRedirect('/administration/all_manager',{'company_id':company_id, 'company_staff_id':company_staff_id})
-
-
-@login_required
 def Update_manager_View(request, id):
     update_info = Manager.objects.get(id=id)
     return render(request, 'administration/manager_profile.html', {'update_info': update_info})
-
 
 
 @custom_login_required
@@ -441,17 +423,6 @@ def CreateClientsView(request,company_id, company_staff_id):
         return render(request, 'administration/clients.html',{'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-# class CreateClientsView(generic.CreateView):
-#     model = Client
-#     tamplate_name = "administration/clients.html"
-#     fields = ('client_first_name', 'client_last_name', 'client_username', 'client_email', 'client_id', 'client_address',
-#               'client_phone', 'technology', 'description')
-#
-#     def get_context_data(self, company_id, company_staff_id, **kwargs):
-#         context = super(CreateClientsView, self).get_context_data(**kwargs)
-#         return context
-
-
 class CreateClientsListView(generic.ListView):
     model = Client
     template_name = "administration/clients-list.html"
@@ -528,15 +499,6 @@ def CreateLeadView(request,company_id, company_staff_id):
         return render(request, 'administration/leads.html',{'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-# class CreateLeadView(generic.CreateView):
-#     model = Lead
-#     fields = (
-#     'lead_name', 'lead_email', 'lead_phone', 'lead_project', 'lead_assign_staff', 'lead_created', 'lead_source')
-#     template_name = "administration/leads.html"
-#     success_url = ('/administration/leads_list')
-
-
-@login_required
 def lead_Edit_View(request,company_id, company_staff_id):
     if company_id:
         if request.method == "GET":
@@ -561,7 +523,6 @@ def lead_Edit_View(request,company_id, company_staff_id):
             print('lead id is-')
             print(emp_id)
             return redirect(f'/administration/leads_list/{company_id}/{company_staff_id}')
-
 
 
 def All_lead_View(request,company_id, company_staff_id):
@@ -687,15 +648,6 @@ def TaskCreateView(request,company_id, company_staff_id):
             return render(request,"administration/add-project.html",{'assigned':Manager.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-# class TaskCreateView(CreateView, LoginRequiredMixin):
-#     model = Task
-#     fields = ['title', 'description', 'assigned_to']
-#
-#     def form_valid(self, form):
-#         form.instance.created_by = self.request.user
-#         return super().form_valid(form)
-
-
 class TaskDetailView(DetailView, LoginRequiredMixin):
     model = Task
     template_name = "administration/task_detail.html"
@@ -709,6 +661,7 @@ class TaskDeleteView(DeleteView, LoginRequiredMixin, UserPassesTestMixin):
         task = self.get_object()
         return self.request.user == task.created_by
 
+
 def attendance(request,company_id, company_staff_id):
     if company_id:
         attendance = Attendance.objects.filter(employee__user__company__id=company_id)
@@ -719,6 +672,7 @@ def attendance(request,company_id, company_staff_id):
 
         }
     return render(request, 'administration/employee-attendance-list.html',context)
+
 
 def Project_list(request,company_id, company_staff_id):
     if request.method == "POST":
@@ -773,8 +727,6 @@ def leaves_approved_list(request,company_id, company_staff_id):
 
 
 def leaves_view(request, id):
-    if not (request.user.is_authenticated):
-        return redirect('/')
 
     leave = get_object_or_404(ManagerLeave, id=id)
     print(leave.user)
@@ -787,8 +739,7 @@ def leaves_view(request, id):
 
 def approve_leave(request,company_id, company_staff_id, id):
     leave = get_object_or_404(ManagerLeave, id=id)
-    # user = leave.user
-    # employee = Employee.objects.filter(user=user)
+
     leave.approve_leave
 
     messages.error(request, 'Leave successfully approved',
@@ -822,7 +773,6 @@ def cancel_leave(request, id):
     return redirect('canceleaveslist')  # work on redirecting to instance leave - detail view
 
 
-# Current section -> here
 def uncancel_leave(request, id):
     if not (request.user.is_superuser and request.user.is_authenticated):
         return redirect('/')
@@ -860,7 +810,6 @@ def reject_leave(request,company_id, company_staff_id,id):
     return redirect(f'/administration/leaves/rejected/all/{company_id}/{company_staff_id}')
 
 
-
 def unreject_leave(request, id):
     leave = get_object_or_404(ManagerLeave, id=id)
     leave.status = 'pending'
@@ -889,7 +838,6 @@ class BalanceRemove(View):
             balance = ManagerLeave.objects.get(id=id)
             balance.delete()
             return redirect(f'/administration/balancelist/{company_id}/{company_staff_id}')
-
 
 
 def notifications(request,company_id, company_staff_id):
@@ -1009,7 +957,6 @@ def Attendancesearch(request,company_id, company_staff_id):
     return render(request, 'administration/employee-attendance-list.html', context)
 
 
-
 def resign_list(request,company_id, company_staff_id):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
@@ -1042,8 +989,6 @@ def resign_view(request, id):
 
     resign = get_object_or_404(Resign, id=id)
 
-    # employee = Employee.objects.filter(user=resign.user)[0]
-    # print(employee)
     return render(request, 'administration/resign_detail_view.html', {'resign': resign,
                                                                       'title': '{0}-{1} resign'.format(
                                                                           resign.user.username,
@@ -1120,9 +1065,6 @@ def reject_resign(request, id):
     return redirect('resignrejected')
 
 
-# return HttpResponse(id)
-
-
 def unreject_resign(request, id):
     resign = get_object_or_404(Resign, id=id)
     resign.status = 'pending'
@@ -1154,27 +1096,6 @@ def holidays(request,company_id, company_staff_id):
         except Exception as e:
             print(e)
         return render(request, 'administration/add-holiday.html',{'company_id':company_id, 'company_staff_id':company_staff_id})
-
-#
-# def holidays(request,company_id, company_staff_id):
-#     if request.method == 'POST':
-#         day = request.POST['day']
-#         print(day)
-#         date = request.POST['date']
-#         print(date)
-#         occassion = request.POST['occassion']
-#         print(occassion)
-#         type = request.POST['type']
-#         print(type)
-#         status = 1
-#         if company_id:
-#
-#             holiday_obj = holiday(day=day, date=date,
-#                                   occassion=occassion, holidaytype=type, status=status)
-#             holiday_obj.save()
-#             return render(request, 'administration/add-holiday.html', {'msg': 'Data updated'},{'company_id':company_id, 'company_staff_id':company_staff_id})
-#
-#     return render(request, 'administration/add-holiday.html',{'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
 def fnholidays(request):
@@ -1268,30 +1189,7 @@ class UserPostListView(LoginRequiredMixin, ListView):
         queryset = Post.objects.filter(user=self.request.user.employee)
         return queryset
 
-# class PostDetailView(View):
-#     def dispatch(self, request, company_id, company_staff_id, *args, **kwargs):
-#         print('Dispatch function called')
-#         company_staff = CompanyStaff.objects.filter(pk=company_staff_id)
-#         if company_staff.exists():
-#             if company_staff.first().is_authenticated:
-#                 return super().dispatch(request, company_id, company_staff_id, *args, **kwargs)
-#             else:
-#                 return redirect('/')
-#         else:
-#             return redirect('/')
-#
-#     def get(self,company_id, company_staff_id):
-#         posts = Post.objects.filter(company__id=company_id)
-#         context = {
-#             "posts": posts,
-#             'company_id': company_id,
-#             'company_staff_id': company_staff_id
-#
-#         }
-#
-#         return render(self.request, 'administration/employee_documents.html', context)
-#
-#
+
 def PostDetailView(request,company_id, company_staff_id,id):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
@@ -1307,19 +1205,6 @@ def PostDetailView(request,company_id, company_staff_id,id):
         return render(request, 'administration/employee_documents.html',
                       {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
 
-# def PostDetailView(request,company_id, company_staff_id,id):
-#
-#     if company_id:
-#         posts = get_object_or_404(Post, id=id)
-#
-#         return render(request, 'administration/employee_documents.html', {'posts':posts,'company_id':company_id, 'company_staff_id':company_staff_id})
-
-
-# class PostDetailView(DetailView):
-#     model = Post
-#     template_name = 'administration/employee_documents.html'
-#
-#
 
 class PostDeleteView(View):
     def get(self, request,company_id, company_staff_id, id):
@@ -1328,6 +1213,7 @@ class PostDeleteView(View):
             posts.delete()
             messages.success(request, f"{posts} deleted successfully")
             return redirect(f'/administration/all_document_View/{company_id}/{company_staff_id}')
+
 
 def DepartmentCreateView(request,company_id, company_staff_id):
     if company_id:
@@ -1343,12 +1229,6 @@ def DepartmentCreateView(request,company_id, company_staff_id):
         return render(request, 'administration/department.html',{'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-# class DepartmentCreateView(generic.CreateView):
-#     model = Department
-#     fields = ('department_name',)
-#     template_name = "administration/department.html"
-#     success_url = ('/administration/department_lst')
-#
 def DepartmentList(request,company_id, company_staff_id):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
@@ -1366,13 +1246,6 @@ def DepartmentList(request,company_id, company_staff_id):
 
         }
         return render(request, 'administration/department.html',context)
-
-
-# class DepartmentList(generic.ListView):
-#     model = Department
-#     template_name = "administration/department.html"
-#     context_object_name = "department_list"
-#     success_url = ('/administration/department_lst')
 
 
 def department_Edit_View(request,company_id, company_staff_id):
@@ -1481,8 +1354,6 @@ def cancel_regularization(request,company_id, company_staff_id, id):
         return redirect(f'/administration/regularization/cancel/all/{company_id}/{company_staff_id}')
 
 
-
-# Current section -> here
 def uncancel_regularization(request, id):
     if not (request.user.is_superuser and request.user.is_authenticated):
         return redirect('/')
@@ -1510,7 +1381,6 @@ def reject_regularization(request, id):
     messages.success(request, 'regularizationation is rejected',
                      extra_tags='alert alert-success alert-dismissible show')
     return redirect('regularizationrejected')
-
 
 
 def unreject_regularization(request, id):
@@ -1603,7 +1473,6 @@ def mcancel_regularization(request, id):
     return redirect('mcancelregularizationlist')  # work on redirecting to instance leave - detail view
 
 
-# Current section -> here
 def muncancel_regularization(request, id):
     if not (request.user.is_superuser and request.user.is_authenticated):
         return redirect('/')
@@ -1631,7 +1500,6 @@ def mreject_regularization(request, id):
     messages.success(request, 'regularizationation is rejected',
                      extra_tags='alert alert-success alert-dismissible show')
     return redirect('mregularizationrejected')
-
 
 
 def munreject_regularization(request, id):
@@ -1682,6 +1550,7 @@ def Mattendance_Edit_View(request,company_id, company_staff_id):
             print(emp_id)
             return redirect(f'/administration/mattendancee/{company_id}/{company_staff_id}')
 
+
 class mAttendanceRemove(View):
     def get(self, request,company_id, company_staff_id, id):
         if company_id:
@@ -1707,7 +1576,6 @@ class mAttendanceManage(UpdateView):
         return HttpResponseRedirect("/administration/mattendancee/")
 
 
-
 def mAttendancesearch(request,company_id, company_staff_id):
     if 'q' in request.GET:
         q = request.GET['q']
@@ -1721,7 +1589,6 @@ def mAttendancesearch(request,company_id, company_staff_id):
         'company_staff_id': company_staff_id
     }
     return render(request, 'administration/manager-attendance-list.html', context)
-
 
 
 def assignCreateView(request,company_id, company_staff_id):
@@ -1741,15 +1608,6 @@ def assignCreateView(request,company_id, company_staff_id):
 
         else:
             return render(request,"administration/assign-employee.html",{'assigned':Manager.objects.filter(user__company__id=company_id),'assignedto':Employee.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
-
-
-# class assignCreateView(CreateView, LoginRequiredMixin):
-#     model = Asign
-#     fields = ['employee', 'description', 'assigned_to']
-#
-#     def form_valid(self, form):
-#         form.instance.created_by = self.request.user
-#         return super().form_valid(form)
 
 
 class assignDetailView(DetailView, LoginRequiredMixin):
@@ -1805,7 +1663,6 @@ def All_document_Views(request,company_id, company_staff_id):
                       {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-
 class ManagerPostListView(ListView):
     def dispatch(self, request, company_id, company_staff_id, *args, **kwargs):
         print('Dispatch function called')
@@ -1825,8 +1682,6 @@ class ManagerPostListView(ListView):
     paginate_by = 2
 
 
-
-
 class MPostListView(LoginRequiredMixin, ListView):
     model = ManagerPost
     template_name = 'administration/manager-all-documents.html'
@@ -1838,6 +1693,7 @@ class MPostListView(LoginRequiredMixin, ListView):
         queryset = ManagerPost.objects.filter(user=self.request.user.manager)
         return queryset
 
+
 def MPostDetailView(request,company_id, company_staff_id,id):
     if request.method == "POST":
         data = json.loads(request.body.decode('utf-8'))
@@ -1847,16 +1703,9 @@ def MPostDetailView(request,company_id, company_staff_id,id):
 
     # Old Code
     if company_id:
-        # company_staff = CompanyStaff.objects.get(id=company_staff_id)
         document_list = ManagerPost.objects.filter(id=id)
-        # document_list = Post.objects.filter(user=company_staff)
         return render(request, 'administration/manager_documents.html',
                       {'document_list': document_list,'company_id':company_id, 'company_staff_id':company_staff_id})
-
-
-# class MPostDetailView(DetailView):
-#     model = ManagerPost
-#     template_name = 'administration/manager_documents.html'
 
 
 class MPostDeleteView(View):

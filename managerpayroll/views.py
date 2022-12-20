@@ -11,8 +11,9 @@ from django.contrib import messages
 from .utils import render_to_pdf
 from django.http import HttpResponse
 from datetime import datetime
-class SalaryView(View):
 
+
+class SalaryView(View):
     def dispatch(self, request, company_id, company_staff_id, *args,**kwargs):
         print('Dispatch function called')
         company_staff = CompanyStaff.objects.filter(pk=company_staff_id)
@@ -27,29 +28,24 @@ class SalaryView(View):
     def get(self, request, company_id, company_staff_id):
         if company_id:
             salary = Salary.objects.filter(manager__user__company__id=company_id)
-            l = []
-            for s in salary:
-                l.append(s.manager.id)
-            form = SalaryForm(l)
+            form = SalaryForm(company_id)
             print('form',form)
             context = {'salary': salary, 'form': form, 'company_id':company_id, 'company_staff_id':company_staff_id}
             return render(request, 'managerpayroll/manager-salary.html', context)
 
-    
     def post(self, request, company_id, company_staff_id):
         if company_id:
-            form = SalaryForm(request.POST or None)
+            form = SalaryForm(company_id,request.POST ,request.FILES)
             if request.method == 'POST':
                 if form.is_valid():
                     form.save()
                     messages.info(request, "Salary was successfully created")
                 return redirect(f'/managerpayroll/msalary/{company_id}/{company_staff_id}')
 
+
 def SalaryDetailView(request, company_id, company_staff_id, id=None,):
-    print("***********************")
-    # getting the template
+
     salary = get_object_or_404(Salary, id=id)
-    print(salary)
 
     context = {
             "manager":salary.manager,
@@ -75,14 +71,6 @@ def SalaryDetailView(request, company_id, company_staff_id, id=None,):
     }
     return render(request,"managerpayroll/manager-payslip.html", context)
 
-# class SalaryDetailView(DetailView):
-#     model = Salary
-#     template_name = "managerpayroll/manager-payslip.html"
-#
-#     def get_context_data(self, company_id, company_staff_id, **kwargs):
-#         context = super(SalaryDetailView, self).get_context_data(**kwargs)
-#         return context
-#
 
 class SalaryRemove(View):
     def get(self, request,company_id, company_staff_id, id):
@@ -102,14 +90,10 @@ class Update_salary_View(UpdateView):
     success_url = ("/managerpayroll/salary/")
 
 
-
 class GeneratePdf(View):
     def get(self,request,company_id, company_staff_id,id=None,*args, **kwargs):
-        print("***********************")
         # getting the template
         salary = get_object_or_404(Salary, id=id)
-        print(salary)
-
         context = {
             "manager":salary.manager,
             "month": salary.month,
@@ -130,8 +114,6 @@ class GeneratePdf(View):
             "net_pay":salary.net_pay,
             'company_id': company_id,
             'company_staff_id': company_staff_id,
-
-
 
         }
 

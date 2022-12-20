@@ -28,15 +28,6 @@ def BalanceCreateView(request,company_id, company_staff_id):
         else:
             return render(request,"manager_leave/add-leaves-balance.html",{'assigned':Manager.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
 
-#
-# class BalanceCreateView(CreateView, LoginRequiredMixin):
-#     model = ManagerLeave
-#     fields = ['user', 'balancedays']
-#
-#     def form_valid(self, form):
-#         form.instance.created_by = self.request.user
-#         return super().form_valid(form)
-
 
 class BalanceDetailView(DetailView, LoginRequiredMixin):
     model = ManagerLeave

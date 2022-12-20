@@ -95,7 +95,6 @@ def EmployeeDashboardView(request, company_id, company_staff_id):
     return render(request, "employee/index.html", ctx)
 
 
-
 def leave_creation(request,company_id, company_staff_id):
     if company_id:
         if request.method == 'POST':
@@ -106,17 +105,12 @@ def leave_creation(request,company_id, company_staff_id):
                 user = company_staff
                 instance.user = company_staff
                 instance.save()
-
-                # print(instance.defaultdays)
                 messages.success(request, 'Leave Request Sent,wait for response',
                                  extra_tags='alert alert-success alert-dismissible show')
                 return redirect(f'/employee/leaves/view/table/{company_id}/{company_staff_id}')
-                # return redirect('/employee/leaves/view/table/')
-
             messages.error(request, 'failed to Request a Leave,please check entry dates',
                            extra_tags='alert alert-warning alert-dismissible show')
         return redirect(f'/employee/leave/{company_id}/{company_staff_id}')
-            # return redirect('/employee/leave/')
 
     dataset = dict()
     form = LeaveCreationForm()
@@ -127,14 +121,12 @@ def leave_creation(request,company_id, company_staff_id):
     return render(request, 'employee/apply-leaves.html', dataset)
 
 
-#  staffs leaves table user only
 def view_my_leave_table(request,company_id, company_staff_id):
-    # work on the logics
+
     if company_id:
         company_staff = CompanyStaff.objects.get(id=company_staff_id)
         user =  company_staff.employee
         leaves = Leave.objects.filter(user=user)
-        # employee = Employee.objects.filter(user=user.employee).first()
         print(leaves)
         dataset = dict()
         dataset['leave_list'] = leaves
@@ -241,57 +233,6 @@ def taskList(request,company_id, company_staff_id):
     context['company_staff_id']= company_staff_id
     return render(request, 'employee/my-project.html', context)
 
-#
-# class TaskListView(ListView, LoginRequiredMixin):
-#     model = MTask
-#     template_name = 'employee/my-project.html'
-#     order = ['-created_date', 'name']
-#     # context_object_name = 'tasks'
-#
-#     def get_queryset(self):
-#         context ={}
-#         from django.urls import resolve
-#         current_url = resolve(self.request.path_info)
-#         print('current_url: ',current_url)
-#         print('company_id: ', self.kwargs['company_id'])
-#         company_id = self.kwargs['company_id']
-#         company_staff_id = self.kwargs['company_staff_id']
-#
-#         print('company_staff_id: ', self.kwargs['company_staff_id'])
-#         company_staff = CompanyStaff.objects.get(id=company_staff_id)
-#         queryset = super(TaskListView, self).get_queryset()
-#         queryset = MTask.objects.filter(assigned_to=company_staff.employee)
-#         print('queryset: ', queryset)
-#         context['tasks']= queryset
-#         context['company_id']= company_id
-#         context['company_staff_id']= company_staff_id
-#         return context
-
-
-# class TaskListView(ListView, LoginRequiredMixin):
-#     model = MTask
-#     template_name = 'employee/my-project.html'
-#     order = ['-created_date', 'name']
-#     # context_object_name = 'tasks'
-#
-#
-#     def get_queryset(self):
-#
-#         print('company_id: ', self.kwargs['company_id'])
-#         company_id = self.kwargs['company_id']
-#         company_staff_id = self.kwargs['company_staff_id']
-#
-#         print('company_staff_id: ', self.kwargs['company_staff_id'])
-#         company_staff = CompanyStaff.objects.get(id=company_staff_id)
-#         context = super(TaskListView, self).get_queryset().filter(assigned_to=company_staff.employee)
-#         # queryset = MTask.objects.filter(assigned_to=company_staff.employee)
-#         # print('queryset: ', queryset)
-#         # context['tasks']= queryset
-#         context['company_id']= company_id
-#         context['company_staff_id']= company_staff_id
-#         print('context: ',context)
-#         return context
-#
 
 def SalaryListView(request,company_id, company_staff_id):
     context ={}
@@ -305,16 +246,6 @@ def SalaryListView(request,company_id, company_staff_id):
     context['company_staff_id']= company_staff_id
     return render(request, 'employee/salary.html', context)
 
-# class SalaryListView(ListView, LoginRequiredMixin):
-#     model = Salary
-#     template_name = 'employee/salary.html'
-#     order = ['-created_date', 'name']
-#     context_object_name = 'salary'
-#
-#     def get_queryset(self):
-#         employee = get_object_or_404(Employee, user=self.request.user)
-#         return Salary.objects.filter(employee=employee)
-#
 
 def notifications(request,company_id, company_staff_id):
     if company_id:
@@ -326,7 +257,6 @@ def notifications(request,company_id, company_staff_id):
 
         }
         return render(request, 'employee/notifications.html', context)
-
 
 
 def resign_creation(request):
@@ -393,14 +323,6 @@ def holidays(request,company_id, company_staff_id):
 
 def getfile(request):
     return serve(request, 'File')
-
-#
-# class PostListView(ListView):
-#     model = Post
-#     template_name = 'employee/home.html'  # <app>/<model>_<viewtype>.html
-#     context_object_name = 'posts'
-#     ordering = ['-date_posted']
-#     paginate_by = 2
 
 
 class UserPostListView(LoginRequiredMixin, ListView):
@@ -471,31 +393,6 @@ def BalanceLeaveView(request,company_id, company_staff_id):
     return render(request, 'employee/leave-balance.html', context)
 
 
-# class BalanceLeaveView(ListView, LoginRequiredMixin):
-#     model = Leave
-#     template_name = 'employee/leave-balance.html'
-#     order = ['-created_date', 'name']
-#     context_object_name = 'balance'
-#
-#     def get_queryset(self):
-#         queryset = super(BalanceLeaveView, self).get_queryset()
-#         queryset = Leave.objects.filter(user=self.request.user.employee)
-#         return queryset
-
-    # def get_queryset(self):
-    #     user = get_object_or_404(User, user=self.request.user)
-    #     return Leave.objects.filter(user=user).order_by('-created_date')
-
-
-# class regularization(CreateView, LoginRequiredMixin):
-#     model = Regularization
-#     fields = ['startdate', 'reason', 'manager']
-#
-#     def form_valid(self, form):
-#         form.instance.created_by = self.request.user.is_employee
-#         return super().form_valid(form)
-#
-#
 def regularization(request):
     if request.method == 'POST':
         form = RegularizationCreationForm(data=request.POST)
@@ -521,33 +418,6 @@ def regularization(request):
     return render(request, 'employee/regularization.html', dataset)
 
 
-# def view_my_regularization_table(self,request):
-#     # work on the logics
-#     if request.user.is_authenticated:
-#         user = request.user
-#         regularization = Regularization.objects.filter(user=user.employee)
-#         dataset = dict()
-#         dataset['regularization_list'] = regularization
-#         dataset['title'] = 'regularization List'
-#     else:
-#         return redirect('accounts:login')
-#     return render(request, 'employee/staff_regularization_table.html', dataset)
-  #
-  # def get_queryset(self):
-  #       employee = get_object_or_404(Employee, user=self.request.user)
-  #       return Salary.objects.filter(employee=employee)
-
-# class view_my_regularization_table(ListView, LoginRequiredMixin):
-#     model = Regularization
-#     template_name = 'employee/attendance-status.html'
-#     order = ['title', 'regularization']
-#     context_object_name = 'regularization'
-#
-#     def get_queryset(self):
-#         employee = get_object_or_404(Employee, user=self.request.user)
-#         return Regularization.objects.filter(user=employee)
-
-
 def regularization_table(request,company_id, company_staff_id):
     context ={}
 
@@ -559,7 +429,6 @@ def regularization_table(request,company_id, company_staff_id):
     context['company_id']= company_id
     context['company_staff_id']= company_staff_id
     return render(request, 'employee/attendance-status.html', context)
-
 
 
 def EntriesCreateView(request):
@@ -604,7 +473,6 @@ def EntryDetailView(request,company_id, company_staff_id):
     return render(request, 'employee/view-timesheet.html', dataset)
 
 
-
 class EntryRemove(View):
     def get(self, request,company_id, company_staff_id, id):
         if company_id:
@@ -641,7 +509,6 @@ def create_entry(request,company_id, company_staff_id):
             return render(request,"employee/create-timesheet.html",{'assigned':Manager.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
-
 def create_leave(request,company_id, company_staff_id):
     if company_id:
         if request.method == "POST":
@@ -652,8 +519,6 @@ def create_leave(request,company_id, company_staff_id):
             company_staff = CompanyStaff.objects.get(id=company_staff_id)
             user = company_staff.employee
             # emp = User.objects.get(email=user)
-
-
 
             Leave.objects.create(user = user,startdate=startdate,enddate=enddate,leavetype=leavetype,reason=reason)
             return redirect(f'/employee/create_leave/{company_id}/{company_staff_id}')
@@ -677,10 +542,8 @@ def create_resign(request,company_id, company_staff_id):
             Resign.objects.create(user = emp, startdate=startdate,reason=reason,assigned_too=assigned_too)
             return redirect(f'/employee/create_resign/{company_id}/{company_staff_id}')
 
-
         else:
             return render(request,"employee/apply-resignation.html",{'rassigned':Manager.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
-
 
 
 def create_regularization(request,company_id, company_staff_id):
@@ -754,27 +617,3 @@ def ChangePassword(request,company_id, company_staff_id):
                 return redirect('/')
 
         return render(request,"employee/change_password.html",{'company_id':company_id, 'company_staff_id':company_staff_id})
-
-#
-# def ChangePassword(request,company_id, company_staff_id):
-#     if company_id:
-#         if request.method == 'POST':
-#             current = request.POST["cpwd"]
-#             new_pas = request.POST["npwd"]
-#
-#             user = CompanyStaff.objects.get(id=company_staff_id)
-#             un = user.email
-#             check = check_password(current, user.email)
-#             if check == True:
-#                 user.is_authenticated = True
-#                 user.make_password(new_pas)
-#                 user.save()
-#                 # update_session_auth_hash(request, user)
-#                 messages.success(request, 'Password changed Successfully')
-#                 user = CompanyStaff.objects.get(email=un)
-#                 login(request, user)
-#                 return redirect('/')
-#             else:
-#                 messages.error(request, 'Incorrect Current Password')
-#
-#         return render(request, "employee/change_password.html",{'company_id':company_id, 'company_staff_id':company_staff_id})

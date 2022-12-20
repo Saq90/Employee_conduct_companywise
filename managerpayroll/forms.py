@@ -9,7 +9,7 @@ class DateInput(forms.DateInput):
 class SalaryForm(forms.ModelForm):
     def __init__(self, company_id, *args, **kwargs):
         super(SalaryForm, self).__init__(*args, **kwargs)
-        self.fields['manager'].queryset = Manager.objects.filter(id__in=company_id)
+        self.fields['manager'].queryset = Manager.objects.filter(user__company_id=company_id)
 
     class Meta:
         model = Salary
