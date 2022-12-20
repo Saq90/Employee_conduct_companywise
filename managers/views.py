@@ -10,7 +10,7 @@ from administration.models import Task, notification, holiday, MTask, Asign
 from employee.models import Attendance, Entries, Employee
 from leave.forms import LeaveCreationForm
 from leave.models import Leave
-from manager_leave.models import ManagerLeave
+from manager_leave.models import ManagerLeave, BalanceLeave
 from manager_resign.models import ManagerResign
 from managerpayroll.models import Salary
 from manageregularization.forms import RegularizationCreationForm
@@ -58,27 +58,6 @@ def manager_profile_view(request,company_id, company_staff_id):
             profile.save()
         return render(request, 'managers/my-profile.html', {'profile': profile,'company_id': company_id, 'company_staff_id': company_staff_id})
     return render(request, 'managers/my-profile.html', {'profile': profile},{'company_id':company_id, 'company_staff_id':company_staff_id})
-
-
-# def manager_profile_view(request,company_id, company_staff_id):
-#
-#     company_staff = CompanyStaff.objects.get(id=company_staff_id)
-#     profile = Manager.objects.filter(user=company_staff).first()
-#     if company_id:
-#         if request.method == "POST":
-#             data = dict(request.POST.copy())
-#             for field, value in data.items():
-#                 if field != 'csrfmiddlewaretoken' and field != 'manager_image':
-#                     setattr(profile, field, value[0])
-#
-#             if 'manager_image' in request.FILES:
-#                 profile.manager_image = request.FILES['manager_image']
-#
-#             profile.save()
-#
-#             return render(request, 'managers/my-profile.html', {'profile': profile},{'company_id':company_id, 'company_staff_id':company_staff_id})
-#     return render(request, 'managers/my-profile.html',
-#                   {'company_id': company_id, 'company_staff_id': company_staff_id})
 
 
 class managerUpdateView(UpdateView):
@@ -168,7 +147,7 @@ def BalanceLeaveView(request,company_id, company_staff_id):
 
     company_staff = CompanyStaff.objects.get(id=company_staff_id)
 
-    queryset = ManagerLeave.objects.filter(user=company_staff.manager)
+    queryset = BalanceLeave.objects.filter(user=company_staff.manager)
     print('queryset: ', queryset)
     context['balance']= queryset
     context['company_id']= company_id

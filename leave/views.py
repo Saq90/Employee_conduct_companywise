@@ -8,7 +8,7 @@ from django.views.generic.base import View
 from account.models import CompanyStaff
 from employee.models import Employee
 from .forms import LeaveDataForm
-from .models import Leave
+from .models import Leave, BalanceLeaves
 
 from django.views.generic import DetailView, ListView
 from django.db.models import Q
@@ -24,7 +24,7 @@ def BalanceCreateView(request,company_id, company_staff_id):
             # user = company_staff
             # emp = Employee.objects.get(user = user)
 
-            Leave.objects.create(balancedays=balancedays,user=assigned_to)
+            BalanceLeaves.objects.create(balancedays=balancedays,user=assigned_to)
             return redirect(f'/leave/balancelists/{company_id}/{company_staff_id}')
 
         else:
@@ -32,12 +32,12 @@ def BalanceCreateView(request,company_id, company_staff_id):
 
 
 class BalanceDetailView(DetailView, LoginRequiredMixin):
-    model = Leave
+    model = BalanceLeaves
 
 
 def Balance_list(request,company_id, company_staff_id):
     if company_id:
-        balance = Leave.objects.filter(user__user__company__id=company_id)
+        balance = BalanceLeaves.objects.filter(user__user__company__id=company_id)
         context = {
             'balance': balance,
             'company_id': company_id,
@@ -50,7 +50,7 @@ def Balance_list(request,company_id, company_staff_id):
 class BalanceRemove(View):
     def get(self, request,company_id, company_staff_id, id):
         if company_id:
-            balance = Leave.objects.get(id=id)
+            balance = BalanceLeaves.objects.get(id=id)
             balance.delete()
             return redirect(f'/leave/balancelists/{company_id}/{company_staff_id}')
 

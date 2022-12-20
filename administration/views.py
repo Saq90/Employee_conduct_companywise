@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.views.generic.base import View
 import employee
-from manager_leave.models import ManagerLeave
+from manager_leave.models import ManagerLeave, BalanceLeave
 from manager_resign.models import ManagerResign
 
 from manageregularization.models import MRegularization
@@ -100,7 +100,6 @@ def All_Employee_View(request, company_id, company_staff_id):
 
     else:
         AllEmployee = Employee.objects.filter(user__company__id = company_id)
-        print(AllEmployee.count())
         if AllEmployee:
             max_employee_id = Employee.objects.filter(user__company__id=company_id).order_by("-id")[0].id + 1
             departments = Department.objects.filter(company__id=company_id).only('department_name')
@@ -328,7 +327,6 @@ def IndexView(request, company_id, company_staff_id):
     # company_id = request.session.get('company')
     if company_id:
         projects_count = Task.objects.filter(company_id=company_id).count()
-        print('projects_count: ',projects_count)
         clients_count = Client.objects.filter(company_id=company_id).count()
         employee_count = Employee.objects.filter(user__company__id=company_id).count()
         lead_count = Lead.objects.all().count()
@@ -822,7 +820,7 @@ def unreject_leave(request, id):
 
 def Balance_list(request,company_id, company_staff_id):
     if company_id:
-        balance = ManagerLeave.objects.filter(user__user__company_id=company_id)
+        balance = BalanceLeave.objects.filter(user__user__company_id=company_id)
         context = {
             'balance': balance,
             'company_id': company_id,

@@ -30,6 +30,7 @@
                       <thead>
                         <tr>
                           <th>Type</th>
+                          <th>Day(s)</th>
                           <th>Status</th>
                         </tr>
                       </thead>
@@ -37,6 +38,7 @@
                         	{% for leave in leave_list %}
                         <tr>
                           <td>{{ leave.leavetype}}</td>
+                          <td>{{ leave.leave_days}}</td>
                                {% if leave.is_approved %}
 							      <td style="color:green;font-weight: bold">{{ leave.status }}</td>
 							      {% else %}

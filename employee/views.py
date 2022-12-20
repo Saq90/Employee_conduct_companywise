@@ -10,7 +10,8 @@ from django.views.generic import View
 from django.contrib.auth.hashers import  make_password
 from administration.models import Task, notification, holiday, MTask
 from leave.forms import LeaveCreationForm
-from leave.models import Leave
+from leave.models import Leave, BalanceLeaves
+from manager_leave.models import BalanceLeave
 from managers.models import Manager
 from payroll.models import Salary
 from regularization.forms import RegularizationCreationForm
@@ -385,7 +386,7 @@ def BalanceLeaveView(request,company_id, company_staff_id):
 
     company_staff = CompanyStaff.objects.get(id=company_staff_id)
 
-    queryset = Leave.objects.filter(user=company_staff.employee)
+    queryset = BalanceLeaves.objects.filter(user=company_staff.employee)
     print('queryset: ', queryset)
     context['balance']= queryset
     context['company_id']= company_id

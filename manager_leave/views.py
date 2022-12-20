@@ -6,7 +6,7 @@ from django.views.generic import CreateView, DeleteView
 
 from managers.models import Manager
 from .forms import LeaveDataForm
-from .models import ManagerLeave
+from .models import ManagerLeave, BalanceLeave
 
 from django.views.generic import DetailView, ListView
 from django.db.models import Q
@@ -22,7 +22,7 @@ def BalanceCreateView(request,company_id, company_staff_id):
             # user = company_staff
             # emp = Employee.objects.get(user = user)
 
-            ManagerLeave.objects.create(balancedays=balancedays,user=assigned_to)
+            BalanceLeave.objects.create(balancedays=balancedays, user=assigned_to)
             return redirect(f'/administration/balancelist/{company_id}/{company_staff_id}')
 
         else:
@@ -30,11 +30,11 @@ def BalanceCreateView(request,company_id, company_staff_id):
 
 
 class BalanceDetailView(DetailView, LoginRequiredMixin):
-    model = ManagerLeave
+    model = BalanceLeave
 
 
 class BalanceDeleteView(DeleteView, LoginRequiredMixin, UserPassesTestMixin):
-    model = ManagerLeave
+    model =  BalanceLeave
     success_url = '/administration/index/'
 
     def test_func(self):

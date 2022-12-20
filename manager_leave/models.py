@@ -33,10 +33,6 @@ class ManagerLeave(models.Model):
     leavetype = models.CharField(verbose_name=_('Leave Type'),choices=LEAVE_TYPE, max_length=25, default=SICK, null=True, blank=False)
     reason = models.CharField(verbose_name=_('Reason for Leave'), max_length=255,
                               help_text='add additional information for leave', null=True, blank=True)
-    balancedays = models.PositiveIntegerField(verbose_name=_('Leave days per year counter'), default=10, null=True,
-                                              blank=True)
-    defaultdays = models.PositiveIntegerField(verbose_name=_('Leave days per year counter'), default=DAYS, null=True,
-                                              blank=True)
 
     status = models.CharField(max_length=12, default='pending')  # pending,approved,rejected,cancelled
     is_approved = models.BooleanField(default=False)  # hide
@@ -139,3 +135,14 @@ class ManagerLeave(models.Model):
             'created': self.created,
             }
         return leave_details_dict
+
+
+class BalanceLeave(models.Model):
+    user = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True, blank=True)
+    leaves=models.ForeignKey(ManagerLeave, on_delete=models.CASCADE,null=True,blank=True)
+    balancedays = models.PositiveIntegerField(verbose_name=_('Leave days per year counter'), default=10, null=True,
+                                              blank=True)
+    created = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
+
+    def __str__(self):
+        return ('{0} - {1}'.format(self.balancedays, self.user))
