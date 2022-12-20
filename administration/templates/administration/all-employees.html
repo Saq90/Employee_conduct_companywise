@@ -81,7 +81,7 @@
                           <div class="row mb-2">
                             <div class="col-md-6">
                               <label for="department" class="form-label">Department <span class="text-danger">*</span></label>
-                              <select class="form-select" name="id" id="id_departments" aria-label="Default select example" required>
+                              <select class="form-select" name="id" id="id_departments" aria-label="Default select example" >
                                 <option selected>Select Department</option>
                                 {% for i in departments %}
                                 <option value={{i.id}}>{{i.department_name}}</option>
@@ -96,7 +96,7 @@
                           <div class="row mb-2">
                             <div class="col-md-6">
                               <label for="department" class="form-label">Report to <span class="text-danger">*</span></label>
-                                <select class="form-select" name="manager_id" id="id_reports_to" aria-label="Default select example" required>
+                                <select class="form-select" name="manager_id" id="id_reports_to" aria-label="Default select example">
                                   <option selected>Select Report to</option>
                                   {% for i in  reports_to %}
                                   <option value={{i.id}}>{{i.manager_email}}</option>

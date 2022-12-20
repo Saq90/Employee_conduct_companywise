@@ -156,7 +156,6 @@ class RolePermissionView(View):
     def get(self, request, name):
         role = Group.objects.get(name=name)
         permissions = role.permissions.all()
-        print(permissions)
 
         for permission in permissions:
             if permission.codename == 'view_employee':

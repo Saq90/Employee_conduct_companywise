@@ -5,22 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aceaa1e-a414-4f3d-909a-979172006f6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/account/templates/account/base1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/templates/account/forgot_pass.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0002_company_companystaff.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0003_auto_20221107_1129.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0004_auto_20221107_1154.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0005_company_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0006_auto_20221107_1541.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0007_auto_20221108_1150.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0008_auto_20221109_1053.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0009_auto_20221109_1638.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0010_auto_20221111_1626.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0011_companystaff_is_authenticated.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/migrations/0002_auto_20221107_1541.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/migrations/0003_auto_20221111_1628.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/migrations/0004_auto_20221116_1652.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/migrations/0005_auto_20221214_1114.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/all-employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/all-employees.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/administration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dstt/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dstt/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leave/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/leave/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager_leave/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_leave/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managerpayroll/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managerpayroll/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payroll/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payroll/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/migrations/0002_auto_20221004_1610.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/migrations/0003_employee_company_staff.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/migrations/0004_auto_20221109_1743.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/migrations/0005_department_company.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/leave/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/migrations/0002_auto_20221003_1859.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/migrations/0003_auto_20221017_1253.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/migrations/0004_auto_20221101_1738.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/migrations/0005_auto_20221102_1956.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leave/migrations/0006_auto_20221102_1958.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/migrations/0002_invoice_company.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/migrations/0003_auto_20221116_1656.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_leave/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_leave/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_leave/migrations/0002_auto_20221102_1958.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_resign/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_resign/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manageregularization/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/manageregularization/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerpayroll/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/managerpayroll/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/migrations/0002_manager_company_staff.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/migrations/0003_auto_20221109_1743.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payroll/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/payroll/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/regularization/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/regularization/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resign/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/resign/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

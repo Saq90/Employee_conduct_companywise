@@ -87,7 +87,7 @@ def Register_Employee_View(request,company_id, company_staff_id):
 
         return redirect(f'/administration/all_employee/{company_id}/{company_staff_id}')
 
-    return render(request, 'administration/all-employees.html',{'departments':Department.objects.all()},{'reports_to':Manager.objects.all()},{'company_id':company_id, 'company_staff_id':company_staff_id})
+    return render(request, 'administration/all-employees.html',{'departments':Department.objects.filter(company__id=company_id)},{'reports_to':Manager.objects.filter(user__company__id=company_id)},{'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
 @custom_login_required
@@ -113,8 +113,8 @@ def All_Employee_View(request, company_id, company_staff_id):
                         })
         else:
             max_employee_id = "NA"
-            departments = "NA"
-            reports_to = "NA"
+            departments = Department.objects.filter(company__id=company_id).only('department_name')
+            reports_to = Manager.objects.filter(user__company__id=company_id).only('manager_email')
             return render(request, 'administration/all-employees.html',
                         {'Employees': AllEmployee, 'max_employee_id': max_employee_id, 'departments': departments,
                         'reports_to': reports_to, 'company_id':company_id, 'company_staff_id':company_staff_id
