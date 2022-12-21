@@ -98,7 +98,6 @@ class Update_salary_View(UpdateView):
 
 class GeneratePdf(View):
     def get(self,request,company_id, company_staff_id,id=None,*args, **kwargs):
-        print("***********************")
         # getting the template
         salary = get_object_or_404(Salary, id=id)
         print(salary)
@@ -132,9 +131,6 @@ class GeneratePdf(View):
 
         # rendering the template
         return HttpResponse(pdf, content_type='application/pdf')
-
-    def post(self,request,id=None,*args, **kwargs):
-        print('0'*10)
 
 
 class CreateSalaryView(generic.CreateView):

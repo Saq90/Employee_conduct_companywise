@@ -87,8 +87,7 @@ urlpatterns = [
     path('balance_remove/<int:company_id>/<int:company_staff_id>/<id>', views.BalanceRemove.as_view(), name='balance_remove'),
 
     path('notifications/<int:company_id>/<int:company_staff_id>', views.notifications,name='notifications'),
-    path('createnotifications/<int:company_id>/<int:company_staff_id>', views.createnotifications,
-         name='createnotifications'),
+    path('createnotifications/<int:company_id>/<int:company_staff_id>', views.createnotifications, name='createnotifications'),
     path('getnotification/', views.getnotification, name='getnotification'),
 
     path('attendancee/<int:company_id>/<int:company_staff_id>', views.attendance, name='attendancee'),

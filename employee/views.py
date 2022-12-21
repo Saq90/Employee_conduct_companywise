@@ -241,7 +241,6 @@ def SalaryListView(request,company_id, company_staff_id):
     company_staff = CompanyStaff.objects.get(id=company_staff_id)
 
     queryset = Salary.objects.filter(employee=company_staff.employee)
-    print('queryset: ', queryset)
     context['salary']= queryset
     context['company_id']= company_id
     context['company_staff_id']= company_staff_id

@@ -137,8 +137,7 @@
                           <td>{{ item.manager.manager_department}}</td>
                           <td>{{ item.month|date:"F Y " }}</td>
                           <td>{{ item.basic|intcomma}}</td>
-                          <td width="1%"><a class="btn btn-sm btn-primary" href="{% url 'msalary-download' company_id=company_id company_staff_id=company_staff_id id=item.id %}">Download</a></td>
-<!--                          <td><button id="download-salary-pdf" class="btn btn-outline-orangeyellow">Download</button></td>-->
+                          <td><a  class="btn btn-outline-orangeyellow" href="{% url 'msalary-download' company_id=company_id company_staff_id=company_staff_id id=item.id %}">Download</a></td>
                         </tr>
                               {% endfor %}
                       </tbody>

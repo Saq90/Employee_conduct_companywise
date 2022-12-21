@@ -858,7 +858,7 @@ def createnotifications(request,company_id, company_staff_id):
                 print(notify)
                 notify_obj = notification(notify=notify)
                 notify_obj.save()
-                return render(request, 'administration/notifications.html', {'msg': 'Notification added successfully'},{'company_id':company_id, 'company_staff_id':company_staff_id})
+                return redirect(f'/administration/notifications/{company_id}/{company_staff_id}')
         except Exception as e:
             print(e)
         return render(request, 'administration/notifications.html',{'company_id':company_id, 'company_staff_id':company_staff_id})
