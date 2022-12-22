@@ -1430,14 +1430,15 @@ def mregularization_view(request, id):
                                                                                    regularization.status)})
 
 
-def mapprove_regularization(request, id):
-    regularization = get_object_or_404(MRegularization, id=id)
+def mapprove_regularization(request,company_id, company_staff_id, id):
+    if company_id:
+        regularization = get_object_or_404(MRegularization, id=id)
 
-    regularization.approve_regularization
+        regularization.approve_regularization
 
-    messages.error(request, 'regularizationation successfully approved',
-                   extra_tags='alert alert-success alert-dismissible show')
-    return redirect('mapprovedregularizationlist')
+        messages.error(request, 'regularizationation successfully approved',
+                       extra_tags='alert alert-success alert-dismissible show')
+        return redirect(f'/administration/mregularization/approved/all/{company_id}/{company_staff_id}')
 
 
 def mcancel_regularization_list(request,company_id, company_staff_id):
@@ -1454,21 +1455,19 @@ def mcancel_regularization_list(request,company_id, company_staff_id):
 
 
 def munapprove_regularization(request, id):
-    if not (request.user.is_authenticated and request.user.is_superuser):
-        return redirect('/')
+
     regularization = get_object_or_404(MRegularization, id=id)
     regularization.unapprove_regularization
     return redirect('mregularizationlist')  # redirect to unapproved list
 
+def mcancel_regularization(request,company_id, company_staff_id, id):
+    if company_id:
 
-def mcancel_regularization(request, id):
-    if not (request.user.is_superuser and request.user.is_authenticated):
-        return redirect('/')
-    regularization = get_object_or_404(MRegularization, id=id)
-    regularization.regularization_cancel
+        regularization = get_object_or_404(MRegularization, id=id)
+        regularization.regularization_cancel
 
-    messages.success(request, 'regularization is canceled', extra_tags='alert alert-success alert-dismissible show')
-    return redirect('mcancelregularizationlist')  # work on redirecting to instance leave - detail view
+        messages.success(request, 'regularization is canceled', extra_tags='alert alert-success alert-dismissible show')
+        return redirect(f'/administration/mregularization/cancel/all/{company_id}/{company_staff_id}')
 
 
 def muncancel_regularization(request, id):

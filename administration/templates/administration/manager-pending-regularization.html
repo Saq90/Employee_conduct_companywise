@@ -80,8 +80,8 @@
                                         </tr>
                                       </tbody>
                                     </table>
-                                    <a href="{% url 'muserregularizationapprove' regularization.id %}" class="btn-outline-orangeyellow btn">Approve</a>
-                                    <a href="{% url 'muserregularizationcancel' regularization.id %}" class="btn-outline-orangeyellow btn">Cancel</a>
+                                    <a href="{% url 'muserregularizationapprove' company_id=company_id company_staff_id=company_staff_id id=regularization.id %}" class="btn-outline-orangeyellow btn">Approve</a>
+                                    <a href="{% url 'muserregularizationcancel' company_id=company_id company_staff_id=company_staff_id id=regularization.id %}" class="btn-outline-orangeyellow btn">Cancel</a>
                                   </div>
                                 </div>
                               </div>
