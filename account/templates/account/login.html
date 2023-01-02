@@ -21,8 +21,7 @@
 
     <title>Employee Conduct HRMS - Login</title>
   </head>
-  <body class="login_bg">
-
+      <body class="login_bg">
     <div class="login_box animate__animated animate__fadeIn animate__slower">
       <div class="card">
         <div class="text-center w-75 m-auto">
@@ -30,6 +29,15 @@
           <br>
           <p class="text-muted">Access to our dashboard</p>
         </div>
+               {% for message in messages  %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message : </strong> {{ message }}
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+    </div>
+    {% endfor %}
+
         <form action="{% url 'signin' %}" method="post">
                		{% csrf_token %}
           <div class="mb-3">

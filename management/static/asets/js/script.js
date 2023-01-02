@@ -66,24 +66,24 @@ $('#download-salary-pdf').click(function(e){
     var element = document.getElementById('print-salary');
     html2pdf(element, opt);
 });
-//$('#download-invoice-pdf').click(function(e){
-//    var opts = ({
-//        margin: 0.5,
-//        filename: 'Invoice.pdf',
-//        image: {
-//            type: 'png'
-//        },
-//        html2canvas: {
-//            scale: 1
-//        },
-//        jsPDF: {
-//            unit: 'in',
-//            format: 'letter',
-//            orientation: 'portrait'
-//        }
-//    });
-//    e.preventDefault();
-//    var elements = document.getElementById('print-invoice');
-//    html2pdf(elements, opts);
-//});
-//
+$('#download-invoice-pdf').click(function(e){
+    var opts = ({
+        margin: 0.5,
+        filename: 'Invoice.pdf',
+        image: {
+            type: 'png'
+        },
+        html2canvas: {
+            scale: 1
+        },
+        jsPDF: {
+            unit: 'in',
+            format: 'letter',
+            orientation: 'portrait'
+        }
+    });
+    e.preventDefault();
+    var elements = document.getElementById('print-invoice');
+    html2pdf(elements, opts);
+});
+

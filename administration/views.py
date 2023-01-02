@@ -856,7 +856,7 @@ def createnotifications(request,company_id, company_staff_id):
             if request.method == 'POST':
                 notify = request.POST['notify']
                 print(notify)
-                notify_obj = notification(notify=notify)
+                notify_obj = notification(notify=notify,company_id=company_id)
                 notify_obj.save()
                 return redirect(f'/administration/notifications/{company_id}/{company_staff_id}')
         except Exception as e:

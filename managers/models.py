@@ -67,6 +67,7 @@ class Manager(models.Model):
     manager_last_name = models.CharField(max_length=100)
     manager_email = models.EmailField(max_length=100)
     manager_joining_date = models.DateField(max_length=50)
+    # manager_department = models.ForeignKey(Department, on_delete=models.CASCADE, default=True)
     manager_department = models.CharField(max_length=100, null=True,)
     manager_designation = models.CharField(max_length=100)
     manager_id = models.CharField(max_length=100)

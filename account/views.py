@@ -339,15 +339,24 @@ def signup(request):
         company_address = request.POST['company_address']
         email = request.POST['email']
         password = request.POST['password']
+        password2 = request.POST['password2']
         if CompanyStaff.objects.filter(email=email).exists():
             messages.error(request, 'email Already exists')
             return redirect('/signup/')
+
+        if password != password2:
+            messages.error(request, 'Password do not match!!')
+            return redirect('/signup/')
+
         else:
             company = Company.objects.create(name=name, company_name=company_name, company_phone=company_phone,
                                              company_address=company_address)
             extend = CompanyStaff(company=company, email=email, password=password)
+            extend.is_authenticated = True
+            extend.is_company_admin = True
             extend.password = make_password(extend.password)
             extend.save()
+            messages.success(request, 'User Registered Successfully! Please Login')
             return HttpResponseRedirect('/')
 
     return render(request, 'account/signup.html')
@@ -360,51 +369,60 @@ class Login(View):
         email = request.POST['email']
         password = request.POST['password']
         company_staff = CompanyStaff.get_Staff_by_email(email)
-        if company_staff is not None:
-            if company_staff.is_active:
-                if company_staff.is_company_admin:
-                    flag = check_password(password, company_staff.password)
-                    if flag:
-                        company_staff.is_authenticated = True
-                        company_staff.save()
-                        # request.user = company_staff
-                        company_id = company_staff.company.pk
-                        # request.session['company'] = company_staff.id
-                        request.session['company_staff_id'] = company_staff.id
-                        return HttpResponseRedirect(f'/administration/index/{company_id}/{company_staff.pk}')
-                    else:
-                        return HttpResponseRedirect(settings.LOGIN_URL)
+        try:
+            if company_staff is not None:
+                if company_staff.is_active:
+                    if company_staff.is_company_admin:
+                        flag = check_password(password, company_staff.password)
+                        if flag:
+                            company_staff.is_authenticated = True
+                            company_staff.save()
+                            # request.user = company_staff
+                            company_id = company_staff.company.pk
+                            # request.session['company'] = company_staff.id
+                            request.session['company_staff_id'] = company_staff.id
+                            return HttpResponseRedirect(f'/administration/index/{company_id}/{company_staff.pk}')
+                        else:
+                            messages.info(request, "Incorrect Email or Password")
+                            return HttpResponseRedirect('/')
 
-                elif company_staff.is_manager:
-                    flag = check_password(password, company_staff.password)
-                    if flag:
-                        company_staff.is_authenticated = True
-                        company_staff.save()
-                        # request.user = company_staff
-                        company_id = company_staff.company.pk
-                        request.session['company_staff_id'] = company_staff.id
-                        return HttpResponseRedirect(f"managers/dashboard/{company_id}/{company_staff.pk}")
-                    else:
-                        return HttpResponseRedirect(settings.LOGIN_URL)
+                    elif company_staff.is_manager:
+                        flag = check_password(password, company_staff.password)
+                        if flag:
+                            company_staff.is_authenticated = True
+                            company_staff.save()
+                            # request.user = company_staff
+                            company_id = company_staff.company.pk
+                            request.session['company_staff_id'] = company_staff.id
+                            return HttpResponseRedirect(f"managers/dashboard/{company_id}/{company_staff.pk}")
+                        else:
+                            messages.info(request, "Incorrect Email or Password")
+                            return HttpResponseRedirect('/')
 
-                elif company_staff.is_employee:
-                    flag = check_password(password, company_staff.password)
-                    if flag:
-                        company_staff.is_authenticated = True
-                        company_staff.save()
-                        # request.user = company_staff
-                        company_id = company_staff.company.pk
-                        request.session['company_staff_id'] = company_staff.id
-                        return HttpResponseRedirect(f"employee/employee_dashboard/{company_id}/{company_staff.pk}")
-                    else:
-                        return HttpResponseRedirect(settings.LOGIN_URL)
+                    elif company_staff.is_employee:
+                        flag = check_password(password, company_staff.password)
+                        if flag:
+                            company_staff.is_authenticated = True
+                            company_staff.save()
+                            # request.user = company_staff
+                            company_id = company_staff.company.pk
+                            request.session['company_staff_id'] = company_staff.id
+                            return HttpResponseRedirect(f"employee/employee_dashboard/{company_id}/{company_staff.pk}")
+                        else:
+                            messages.info(request, "Incorrect Email or Password")
+                            return HttpResponseRedirect('/')
 
+                    else:
+                        return HttpResponseRedirect('/')
                 else:
-                    return HttpResponseRedirect(settings.LOGIN_URL)
+                    return HttpResponseRedirect('/')
             else:
-                return HttpResponseRedirect(settings.LOGIN_URL)
-        else:
-            return HttpResponseRedirect(settings.LOGIN_URL)
+                return HttpResponseRedirect('/')
+
+        except:
+            messages.error(request, "Email does not  Registered!")
+            return HttpResponseRedirect('/')
+
 
     def get(self, request):
         return render(request, "account/login.html")
