@@ -5,6 +5,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import Group
+from django.core.mail import EmailMessage
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views import generic
@@ -1712,4 +1713,71 @@ class MPostDeleteView(View):
             posts.delete()
             messages.success(request, f"{posts} deleted successfully")
             return redirect(f'/administration/manager_document_View/{company_id}/{company_staff_id}')
+
+
+def sendemail(request, company_id, company_staff_id):
+    if company_id:
+        context = {}
+        ch = CompanyStaff.objects.filter(id=company_staff_id)
+        if len(ch) > 0:
+            data = CompanyStaff.objects.get(id=company_staff_id)
+            context["data"] = data
+
+        if request.method == "POST":
+
+            rec = request.POST["to"].split(",")
+            print(rec)
+            sub = request.POST["sub"]
+            msz = request.POST["msz"]
+
+            try:
+                em = EmailMessage(sub, msz, to=rec)
+                em.send()
+                context["status"] = "Email Sent"
+                context["cls"] = "alert-success"
+            except:
+                context["status"] = "Could not Send, Please check Internet Connection / Email Address"
+                context["cls"] = "alert-danger"
+                context['company_id'] = company_id
+                context['company_staff_id'] = company_staff_id
+        return render(request, "administration/sendemail.html", context)
+    
+
+def Notification_Edit_View(request,company_id, company_staff_id):
+    if company_id:
+        if request.method == "GET":
+            id = request.GET.get('id')
+            notification_obj = notification.objects.get(pk=id)
+            return JsonResponse(notification_obj.to_json())
+
+        elif request.method == "POST":
+            notification_models_fields_list = [f.name for f in notification._meta.get_fields()]
+            notification_models_fields_dict = {}
+            notification_obj_id = request.POST.get('id')
+            notification_obj = notification.objects.filter(pk=notification_obj_id)
+
+            for key, value in request.POST.items():
+                if key in notification_models_fields_list and key != 'id' and key != 'id' and value is not None and len(
+                        value) != 0:
+                    print(key, value)
+                    notification_models_fields_dict.setdefault(key, value)
+            notification_obj.update(**notification_models_fields_dict)
+            emp_id = request.POST.get('id')
+
+            print('notification id is-')
+            print(emp_id)
+            return redirect(f'/administration/notifications/{company_id}/{company_staff_id}')
+        
+class NotificationRemove(View):
+    def get(self, request,company_id, company_staff_id, id):
+        if company_id:
+            notifications = notification.objects.get(id=id)
+            notifications.delete()
+            messages.success(request, f"{notifications} deleted successfully")
+            return redirect(f'/administration/notifications/{company_id}/{company_staff_id}')
+
+
+
+
+
 

@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aceaa1e-a414-4f3d-909a-979172006f6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/administration/templates/administration/sendemail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/internal_H.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/internal_H.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/notifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/notifications.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/administration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dstt/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dstt/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/static/asets/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/management/static/asets/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "C:/Users/saquib/Desktop/New folder (10)/django-sendpdf-master",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">

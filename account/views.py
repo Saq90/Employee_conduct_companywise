@@ -457,3 +457,4 @@ def reset_password(request):
             return JsonResponse({"status": "error", "email": user.email})
     except:
         return JsonResponse({"status": "failed"})
+

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import socket
-
+import sweetify
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -174,7 +174,6 @@ MESSAGE_TAGS = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-import sweetify
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 sweetify.DEFAULT_OPTS = {
     'showConfirmButton': True,

@@ -89,6 +89,8 @@ urlpatterns = [
     path('notifications/<int:company_id>/<int:company_staff_id>', views.notifications,name='notifications'),
     path('createnotifications/<int:company_id>/<int:company_staff_id>', views.createnotifications, name='createnotifications'),
     path('getnotification/', views.getnotification, name='getnotification'),
+    path('notification_edit/<int:company_id>/<int:company_staff_id>', views.Notification_Edit_View, name='notification_edit'),
+    path('notification_remove/<int:company_id>/<int:company_staff_id>/<int:id>', views.NotificationRemove.as_view(), name='department_remove'),
 
     path('attendancee/<int:company_id>/<int:company_staff_id>', views.attendance, name='attendancee'),
     path('getattendance/', views.getattendance, name='getattendance'),
@@ -178,5 +180,7 @@ urlpatterns = [
     path('mallpost/<int:company_id>/<int:company_staff_id>/<int:id>/', views.MPostDetailView, name='mallpost'),
     path('search/', views.search, name='search'),
     path('mpost-delete/<int:company_id>/<int:company_staff_id>/<int:id>', views.MPostDeleteView.as_view(), name='mpost-delete'),
+
+    path("sendemail/<int:company_id>/<int:company_staff_id>/", views.sendemail, name="sendemail"),
 
 ]

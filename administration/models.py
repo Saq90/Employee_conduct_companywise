@@ -153,6 +153,13 @@ class notification(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, default=True)
     notify = models.CharField(max_length=500,blank=False)
 
+    def to_json(self):
+        notification_details_dict = {
+            'id': self.id,
+            'notify': self.notify,
+        }
+        return notification_details_dict
+
 
 class holiday(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, default=True)
