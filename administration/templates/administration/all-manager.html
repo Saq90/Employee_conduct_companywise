@@ -80,10 +80,10 @@
                           <div class="row mb-2">
                             <div class="col-md-6">
                               <label for="department" class="form-label">Department <span class="text-danger">*</span></label>
-                              <select class="form-select" name="manager_department" id="id_departments" aria-label="Default select example" required>
+                               <select class="form-select" name="id" id="id_departments" aria-label="Default select example" >
                                 <option selected>Select Department</option>
-                                	{% for role_key,role_value in role_choices.items %}
-                                <option value="{{role_key}}">{{role_value}}</option>
+                                {% for i in departments %}
+                                <option value={{i.id}}>{{i.department_name}}</option>
                                 {% endfor %}
                               </select>
                             </div>

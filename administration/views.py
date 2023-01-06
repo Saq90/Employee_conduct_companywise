@@ -196,13 +196,14 @@ def Register_manager_View(request,company_id, company_staff_id):
         manager_last_name = request.POST['manager_last_name']
         manager_email = request.POST['manager_email']
         manager_joining_date = request.POST['manager_joining_date']
-        manager_department = request.POST['manager_department']
         manager_password = request.POST['manager_password']
         manager_confirm_password = request.POST['manager_confirm_password']
         manager_id = request.POST['manager_id']
         manager_phone = request.POST['manager_phone']
         manager_salary = request.POST['manager_salary']
         manager_joining_date = datetime.strptime(manager_joining_date, '%d/%m/%Y')
+        department_id = request.POST.get("id")
+        manager_department = Department.objects.get(id=department_id)
         # employee_role = Group.objects.get(name=request.POST['employee_role'])
         if company_id:
             try:
@@ -233,7 +234,7 @@ def Register_manager_View(request,company_id, company_staff_id):
         return redirect(f'/administration/all_manager/{company_id}/{company_staff_id}')
     else:
         groups = Group.objects.all()
-        return render(request, 'administration/all-manager.html', {'groups': groups,'company_id':company_id, 'company_staff_id':company_staff_id})
+        return render(request, 'administration/all-manager.html',{'departments':Department.objects.filter(company__id=company_id)},{'groups': groups,'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
 @custom_login_required
@@ -249,12 +250,14 @@ def All_manager_View(request, company_id, company_staff_id):
         manager = Manager.objects.filter(user__company__id=company_id)
         if manager:
             max_manager_id = Manager.objects.filter(user__company__id=company_id).order_by("-id")[0].id + 1
+            departments = Department.objects.filter(company__id=company_id).only('department_name')
             return render(request, 'administration/all-manager.html',
-                          {'manager': manager, 'max_manager_id': max_manager_id, 'role_choices': role_choices, 'company_id':company_id, 'company_staff_id':company_staff_id})
+                          {'manager': manager, 'max_manager_id': max_manager_id, 'role_choices': role_choices,'departments': departments, 'company_id':company_id, 'company_staff_id':company_staff_id})
         else:
             max_manager_id = "NA"
+            departments = Department.objects.filter(company__id=company_id).only('department_name')
             return render(request, 'administration/all-manager.html',
-                          {'manager': manager, 'max_manager_id': max_manager_id, 'role_choices': role_choices, 'company_id':company_id, 'company_staff_id':company_staff_id})
+                          {'manager': manager, 'max_manager_id': max_manager_id, 'role_choices': role_choices,'departments': departments, 'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
 def manager_Edit_View(request,company_id, company_staff_id):

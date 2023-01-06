@@ -16,6 +16,9 @@ from django.shortcuts import HttpResponseRedirect, reverse
 
 # -------------------------------manager Model--------------------------------------------------------------------------------
 from account.models import CompanyStaff
+# from employee.models import Department
+# import employee.models.Department
+from django.db import models
 
 
 def validate_start_time(value):
@@ -67,8 +70,8 @@ class Manager(models.Model):
     manager_last_name = models.CharField(max_length=100)
     manager_email = models.EmailField(max_length=100)
     manager_joining_date = models.DateField(max_length=50)
-    # manager_department = models.ForeignKey(Department, on_delete=models.CASCADE, default=True)
-    manager_department = models.CharField(max_length=100, null=True,)
+    manager_department = models.ForeignKey(to = 'employee.Department', on_delete=models.CASCADE, null=True)
+    # manager_department = models.CharField(max_length=100, null=True,)
     manager_designation = models.CharField(max_length=100)
     manager_id = models.CharField(max_length=100)
     manager_phone = models.CharField(max_length=100, null=True)
@@ -125,7 +128,7 @@ class Manager(models.Model):
         manager_details_dict = {
             'manager_first_name': self.manager_first_name,
             'manager_last_name': self.manager_last_name,
-            'manager_department': self.manager_department,
+            'manager_department': self.manager_department.department_name,
             'manager_image': self.manager_image.url if self.manager_image else None,
             'manager_gender': self.manager_gender,
             'manager_address': self.manager_address,
