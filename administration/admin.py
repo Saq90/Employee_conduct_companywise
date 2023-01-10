@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Client,Lead, Task,notification,holiday,MTask,Asign
+from .models import Client,Lead, Task,notification,holiday,MTask,Asign,ManagerNotification
 
 
 # Register your models here.
@@ -23,3 +23,4 @@ admin.site.register(notification)
 admin.site.register(holiday)
 admin.site.register(MTask)
 admin.site.register(Asign)
+admin.site.register(ManagerNotification)

@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.views.generic import View
 
 from account.models import CompanyStaff
-from administration.models import Task, notification, holiday, MTask, Asign
+from administration.models import Task, notification, holiday, MTask, Asign, ManagerNotification
 from employee.models import Attendance, Entries, Employee
 from leave.forms import LeaveCreationForm
 from leave.models import Leave
@@ -992,3 +992,14 @@ def ChangePassword(request,company_id, company_staff_id):
 
         return render(request,"managers/change_password.html",{'company_id':company_id, 'company_staff_id':company_staff_id})
 
+def MyNotification(request,company_id, company_staff_id):
+    context ={}
+
+    company_staff = CompanyStaff.objects.get(id=company_staff_id)
+
+    queryset = ManagerNotification.objects.filter(user=company_staff.manager)
+    print('queryset: ', queryset)
+    context['notification']= queryset
+    context['company_id']= company_id
+    context['company_staff_id']= company_staff_id
+    return render(request, 'managers/mynotification.html', context)

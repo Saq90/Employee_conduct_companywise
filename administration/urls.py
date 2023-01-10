@@ -183,4 +183,6 @@ urlpatterns = [
 
     path("sendemail/<int:company_id>/<int:company_staff_id>/", views.sendemail, name="sendemail"),
 
+    path("managernotification/<int:company_id>/<int:company_staff_id>/", views.Managernotifications, name="managernotification"),
+
 ]

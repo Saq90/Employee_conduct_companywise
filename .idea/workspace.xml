@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aceaa1e-a414-4f3d-909a-979172006f6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/managers/migrations/0002_auto_20230105_2219.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/managers/migrations/0003_auto_20230105_2231.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/managers/migrations/0004_remove_manager_manager_department.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/managers/migrations/0005_manager_manager_department.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/media/16_8TzTuGK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/administration/migrations/0002_managernotification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/administration/templates/administration/managernotification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/managers/templates/managers/mynotification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administration/templates/administration/all-manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/all-manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/templates/administration/notifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/administration/templates/administration/notifications.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/administration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/administration/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/templates/managers/notifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/managers/templates/managers/notifications.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

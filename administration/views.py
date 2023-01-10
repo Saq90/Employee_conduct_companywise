@@ -23,7 +23,7 @@ from leave.models import Leave
 from managers.models import Manager, ManagerAttendance, ManagerPost
 from regularization.models import Regularization
 from resign.models import Resign
-from .models import Client, Lead, Task, notification, holiday, Asign
+from .models import Client, Lead, Task, notification, holiday, Asign, ManagerNotification
 from django.urls import reverse
 from django.contrib import messages
 from django.utils.decorators import method_decorator
@@ -1780,6 +1780,21 @@ class NotificationRemove(View):
             return redirect(f'/administration/notifications/{company_id}/{company_staff_id}')
 
 
+def Managernotifications(request,company_id, company_staff_id):
+    if company_id:
+        if request.method == "POST":
+            notifications  = request.POST.get("notifications")
+            assign_id = request.POST.get("manager_id")
+            assigned_to = Manager.objects.get(id =assign_id)
+            # company_staff = CompanyStaff.objects.get(id=company_staff_id)
+            # user = company_staff
+            # emp = Employee.objects.get(user = user)
+
+            ManagerNotification.objects.create(notifications=notifications, user=assigned_to)
+            return redirect(f'/administration/notifications/{company_id}/{company_staff_id}')
+
+        else:
+            return render(request,"administration/managernotification.html",{'assigned':Manager.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
 
 
 

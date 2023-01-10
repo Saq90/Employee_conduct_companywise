@@ -199,3 +199,19 @@ class Asign(models.Model):
         }
 
         return assign_details_dict
+
+
+class ManagerNotification(models.Model):
+    user = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True, blank=True)
+    notifications = models.CharField(max_length=500, blank=False)
+
+    def to_json(self):
+        notification_details_dict = {
+            'id': self.id,
+            'notifications': self.notifications,
+        }
+        return notification_details_dict
+
+    def __str__(self):
+        return ('{0} - {1}'.format(self.id, self.user))
+

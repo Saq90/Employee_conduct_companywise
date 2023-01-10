@@ -24,6 +24,7 @@
                 <button type="button" class="btn btn-outline-orangeyellow" data-bs-toggle="modal" data-bs-target="#addnotificationModal" id="addnotificationBtn">
                   <i class="bx bx-plus"></i> Add Notifications
                 </button>
+                   <a href="{% url 'managernotification' company_id=company_id company_staff_id=company_staff_id %}" class="btn btn-outline-orangeyellow ms-2">Send Notifications</a>
                 <div class="modal" id="addnotificationModal">
                   <div class="modal-dialog">
                     <div class="modal-content">
