@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Manager,ManagerEntry,ManagerPost,ManagerAttendance
+from .models import Manager,ManagerEntry,ManagerPost,ManagerAttendance,EmployeeNotification
 
 
 # Register your models here.
@@ -17,4 +17,5 @@ class ManagerAdmin(admin.ModelAdmin):
 admin.site.register(ManagerAttendance)
 admin.site.register(ManagerEntry)
 admin.site.register(ManagerPost)
+admin.site.register(EmployeeNotification)
 

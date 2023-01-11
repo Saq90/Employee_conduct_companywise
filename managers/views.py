@@ -35,7 +35,7 @@ from django.views.generic import (
 )
 from django.contrib.staticfiles.views import serve
 from django.db.models import Q
-from .models import Manager, ManagerAttendance, ManagerPost
+from .models import Manager, ManagerAttendance, ManagerPost, EmployeeNotification
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -1003,3 +1003,23 @@ def MyNotification(request,company_id, company_staff_id):
     context['company_id']= company_id
     context['company_staff_id']= company_staff_id
     return render(request, 'managers/mynotification.html', context)
+
+
+def Employeenotifications(request,company_id, company_staff_id):
+    if company_id:
+        if request.method == "POST":
+            notifications  = request.POST.get("notifications")
+            assign_id = request.POST.get("employee_id")
+            assigned_to = Employee.objects.get(id =assign_id)
+            # company_staff = CompanyStaff.objects.get(id=company_staff_id)
+            # user = company_staff
+            # emp = Employee.objects.get(user = user)
+
+            EmployeeNotification.objects.create(notifications=notifications, user=assigned_to)
+            return redirect(f'/managers/mnotification/{company_id}/{company_staff_id}')
+
+        else:
+            return render(request,"managers/employeenotification.html",{'assigned':Employee.objects.filter(user__company__id=company_id),'company_id':company_id, 'company_staff_id':company_staff_id})
+
+
+

@@ -1,7 +1,7 @@
 {% load static %}
-{% include "employee/header.html" %}
-{% include "employee/sidebar.html" %}
-{% include "employee/topbar.html" %}
+{% include "managers/header.html" %}
+{% include "managers/sidebar.html" %}
+{% include "managers/topbar.html" %}
 
       <div class="page_wrapper">
         <div class="page-content">
@@ -15,30 +15,41 @@
                       <i class="bx bx-home"></i>
                     </a>
                   </li>
-                  <li class="breadcrumb-item active" aria-current="page">Notifications</li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Notifications</li>
                 </ol>
               </nav>
             </div>
-            <div class="ms-auto">
-              <div class="btn-group">
-                    <a href="{% url 'mynotifications' company_id=company_id company_staff_id=company_staff_id %}"  class="btn btn-outline-orangeyellow ms-2">My Notifications</a>
-              </div>
-            </div>
           </div>
           <hr>
-
-           <div class="row mt-3">
+          <div class="row mt-3">
             <div class="col-12">
               <div class="card">
-                       {% for i in notify%}
                 <div class="card-body">
-                 <div class="notifications-box align-items-center d-flex mb-3">
-                    <i class='bx bxs-bell-plus' ></i>
-                    <div class="notifications-content">{{i.notify}}</div>
-                    <div class="ms-auto"><i class='bx bx-window-close'></i></div>
-                 </div>
+                  <form
+                  method="POST" action="{% url 'employeenotification' company_id=company_id company_staff_id=company_staff_id %}">
+                {% csrf_token %}
+                    <div class="row mb-2">
+                      <div class="col">
+                        <label for="user" class="form-label">User <span class="text-danger">*</span></label>
+                        <select class="form-select" aria-label="Default select example" id="user" name="employee_id">
+                        <option selected>Select Employee</option>
+                                  {% for i in assigned %}
+                          <option value="{{i.id}}">{{i.employee_email}}</option>
+                          	{% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col">
+                        <label for="notifications" class="form-label">send notifications <span class="text-danger">*</span></label>
+                         <textarea class="form-control" name="notifications" cols="50" id="notifications" rows="6" required></textarea>
+                      </div>
+                    </div>
+                    <div class="mt-4 mb-2 button-right">
+                      <button type="submit" class="btn btn-outline-orangeyellow">Submit</button>
+                    </div>
+                  </form>
                 </div>
-                     {% endfor %}
               </div>
             </div>
           </div>
@@ -64,39 +75,5 @@
     <script src="{% static 'asets/js/Chart.extension.js' %}"></script>
     <script src="{% static 'asets/js/script.js' %}"></script>
 
-<!--   <script>-->
-<!--           function notification_id_fetch(id){-->
-
-<!--        var notification_id_heading = document.getElementById("notification_id_heading");-->
-<!--        var notification_name_edit = document.getElementById("notification_name_edit");-->
-<!--        notification_id_heading.value = id;-->
-
-<!--        $.ajax({-->
-<!--          url: '',-->
-<!--          method: "GET",-->
-<!--          data: {'id': id},-->
-<!--          dataType: "json",-->
-<!--          success: function(res){-->
-<!--            notification_name_edit.value = res['notify']-->
-
-<!--          },-->
-<!--          error: function(xhr, status, error){-->
-<!--            console.log(error);-->
-<!--            console.log(status);-->
-<!--            console.log(xhr);-->
-<!--          }-->
-<!--        })-->
-<!--      }-->
-
-<!--   </script>-->
-
-<!--    <script>-->
-<!--  	function getId(id) {-->
-<!--		// alert(id)-->
-<!--		var a =document.getElementById('delete');-->
-<!--		a.href = "/administration/notification_remove/{{company_id}}/{{company_staff_id}}/"+id;-->
-<!--	}-->
-
-<!--   </script>-->
-
-
+  </body>
+</html>

@@ -22,7 +22,7 @@
             <div class="ms-auto">
               <div class="btn-group">
                     <a href="{% url 'mynotification' company_id=company_id company_staff_id=company_staff_id %}"  class="btn btn-outline-orangeyellow ms-2">My Notifications</a>
-                   <a href="" class="btn btn-outline-orangeyellow ms-2">Send Notifications</a>
+                     <a href="{% url 'employeenotification' company_id=company_id company_staff_id=company_staff_id %}" class="btn btn-outline-orangeyellow ms-2">Send Notifications</a>
               </div>
             </div>
           </div>
@@ -65,39 +65,39 @@
     <script src="{% static 'asets/js/Chart.extension.js' %}"></script>
     <script src="{% static 'asets/js/script.js' %}"></script>
 
-   <script>
-           function notification_id_fetch(id){
+<!--   <script>-->
+<!--           function notification_id_fetch(id){-->
 
-        var notification_id_heading = document.getElementById("notification_id_heading");
-        var notification_name_edit = document.getElementById("notification_name_edit");
-        notification_id_heading.value = id;
+<!--        var notification_id_heading = document.getElementById("notification_id_heading");-->
+<!--        var notification_name_edit = document.getElementById("notification_name_edit");-->
+<!--        notification_id_heading.value = id;-->
 
-        $.ajax({
-          url: '',
-          method: "GET",
-          data: {'id': id},
-          dataType: "json",
-          success: function(res){
-            notification_name_edit.value = res['notify']
+<!--        $.ajax({-->
+<!--          url: '',-->
+<!--          method: "GET",-->
+<!--          data: {'id': id},-->
+<!--          dataType: "json",-->
+<!--          success: function(res){-->
+<!--            notification_name_edit.value = res['notify']-->
 
-          },
-          error: function(xhr, status, error){
-            console.log(error);
-            console.log(status);
-            console.log(xhr);
-          }
-        })
-      }
+<!--          },-->
+<!--          error: function(xhr, status, error){-->
+<!--            console.log(error);-->
+<!--            console.log(status);-->
+<!--            console.log(xhr);-->
+<!--          }-->
+<!--        })-->
+<!--      }-->
 
-   </script>
+<!--   </script>-->
 
-    <script>
-  	function getId(id) {
-		// alert(id)
-		var a =document.getElementById('delete');
-		a.href = "/administration/notification_remove/{{company_id}}/{{company_staff_id}}/"+id;
-	}
+<!--    <script>-->
+<!--  	function getId(id) {-->
+<!--		// alert(id)-->
+<!--		var a =document.getElementById('delete');-->
+<!--		a.href = "/administration/notification_remove/{{company_id}}/{{company_staff_id}}/"+id;-->
+<!--	}-->
 
-   </script>
+<!--   </script>-->
 
 

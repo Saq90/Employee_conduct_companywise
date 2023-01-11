@@ -62,6 +62,7 @@ urlpatterns = [
 
     path('create_ducuments/<int:company_id>/<int:company_staff_id>', views.create_ducuments, name='create_ducuments'),
     path('change_password/<int:company_id>/<int:company_staff_id>', views.ChangePassword, name='change_password'),
+    path("mynotifications/<int:company_id>/<int:company_staff_id>/", views.MyNotification, name="mynotifications"),
 
 
 

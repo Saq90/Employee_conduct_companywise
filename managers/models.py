@@ -20,6 +20,8 @@ from account.models import CompanyStaff
 # import employee.models.Department
 from django.db import models
 
+from employee.models import Employee
+
 
 def validate_start_time(value):
     """
@@ -310,4 +312,19 @@ class ManagerPost(models.Model):
 
         }
         return post_details_dict
+
+
+class EmployeeNotification(models.Model):
+    user = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True, blank=True)
+    notifications = models.CharField(max_length=500, blank=False)
+
+    def to_json(self):
+        notification_details_dict = {
+            'id': self.id,
+            'notifications': self.notifications,
+        }
+        return notification_details_dict
+
+    def __str__(self):
+        return ('{0} - {1}'.format(self.id, self.user))
 

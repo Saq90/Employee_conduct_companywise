@@ -12,7 +12,7 @@ from administration.models import Task, notification, holiday, MTask
 from leave.forms import LeaveCreationForm
 from leave.models import Leave, BalanceLeaves
 from manager_leave.models import BalanceLeave
-from managers.models import Manager
+from managers.models import Manager, EmployeeNotification
 from payroll.models import Salary
 from regularization.forms import RegularizationCreationForm
 from regularization.models import Regularization
@@ -617,3 +617,17 @@ def ChangePassword(request,company_id, company_staff_id):
                 return redirect('/')
 
         return render(request,"employee/change_password.html",{'company_id':company_id, 'company_staff_id':company_staff_id})
+
+
+def MyNotification(request,company_id, company_staff_id):
+    context ={}
+
+    company_staff = CompanyStaff.objects.get(id=company_staff_id)
+
+    queryset = EmployeeNotification.objects.filter(user=company_staff.employee)
+    print('queryset: ', queryset)
+    context['notification']= queryset
+    context['company_id']= company_id
+    context['company_staff_id']= company_staff_id
+    return render(request, 'employee/mynotification.html', context)
+
