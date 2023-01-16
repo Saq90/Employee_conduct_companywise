@@ -79,7 +79,7 @@ def Register_Employee_View(request,company_id, company_staff_id):
 
                     register_employee.save()
                     # messages.success(request,"Employee Registered Successfully!")
-                    sweetify.success(request, 'Employee Registered Successfully!', button='Ok', timer=3000)
+                    messages.success(request, 'Employee Registered Successfully!')
 
                 else:
                     messages.error(request, " Confirm password and password does not match!")
@@ -224,7 +224,7 @@ def Register_manager_View(request,company_id, company_staff_id):
                                                manager_phone=manager_phone)
                     register_manager.save()
                     # messages.success(request,"Employee Registered Successfully!")
-                    sweetify.success(request, 'Manager  Registered Successfully!', button='Ok', timer=3000)
+                    messages.success(request, 'Manager  Registered Successfully!')
 
                 else:
                     messages.error(request, " Confirm password and password does not match!")
